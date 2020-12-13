@@ -72,4 +72,14 @@ public class ReactiveScenariosTest {
                 .body(is("OK"));
     }
 
+    
+    @Test
+    public void testFilterAbortingWithByteArray() {
+        given()
+                .header("prematchresponse", "yes")
+                .get("/dummypath")
+                .then()
+                .statusCode(200).contentType(ContentType.BINARY);
+    }
+
 }

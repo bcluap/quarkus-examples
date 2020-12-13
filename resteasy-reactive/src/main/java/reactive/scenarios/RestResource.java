@@ -89,5 +89,14 @@ public class RestResource {
     public String methodNotBoundForPutInReactiveMode(String test) {
         return "OK";
     }
+    
+    
+    @GET
+    @Path("/dummypath")
+    @Consumes(MediaType.WILDCARD)
+    @Produces(MediaType.WILDCARD)
+    public String dummy() {
+        return "OK";
+    }
 
 }

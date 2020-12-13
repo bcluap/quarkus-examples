@@ -8,11 +8,14 @@ import java.io.IOException;
 import java.util.List;
 import javax.annotation.Priority;
 import javax.interceptor.Interceptor;
+import javax.ws.rs.WebApplicationException;
 import javax.ws.rs.container.ContainerRequestContext;
 import javax.ws.rs.container.ContainerRequestFilter;
 import javax.ws.rs.container.ContainerResponseContext;
 import javax.ws.rs.container.ContainerResponseFilter;
 import javax.ws.rs.ext.Provider;
+import javax.ws.rs.ext.WriterInterceptor;
+import javax.ws.rs.ext.WriterInterceptorContext;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -22,7 +25,7 @@ import org.slf4j.LoggerFactory;
  */
 @Provider
 @Priority(Interceptor.Priority.PLATFORM_BEFORE + 100)
-public class ExamplePostMatchFilter implements ContainerRequestFilter, ContainerResponseFilter {
+public class ExamplePostMatchFilter implements ContainerRequestFilter, ContainerResponseFilter, WriterInterceptor {
 
     private static final Logger log = LoggerFactory.getLogger(ExamplePostMatchFilter.class);
 
@@ -32,7 +35,7 @@ public class ExamplePostMatchFilter implements ContainerRequestFilter, Container
         /*
         NOTE: In reactive mode you will see that calls to sub resources go through this point twice
         java.lang.IllegalStateException: Why has this request been through the filter twice when we are in reactive mode using sub resource? -- /sub-resource/abc
-        */
+         */
         if (requestContext.getProperty("been.here") != null) {
             throw new IllegalStateException("Why has this request been through the filter twice when we are in reactive mode using sub resource? -- " + requestContext.getUriInfo().getPath());
         }
@@ -46,9 +49,13 @@ public class ExamplePostMatchFilter implements ContainerRequestFilter, Container
         /*
         NOTE: In reactive mode an NPE will be thrown
         java.lang.NullPointerException: Cannot invoke "org.jboss.resteasy.reactive.server.mapping.RuntimeResource.getClassPath()" because "this.target" is null
-        */
+         */
         List<Object> resources = requestContext.getUriInfo().getMatchedResources();
     }
 
-
+    @Override
+    public void aroundWriteTo(WriterInterceptorContext wic) throws IOException, WebApplicationException {
+        // NOTE: This in conjunction with the pre-match filter aborting with a payload of over 30463 causes an exception
+        wic.proceed();
+    }
 }
