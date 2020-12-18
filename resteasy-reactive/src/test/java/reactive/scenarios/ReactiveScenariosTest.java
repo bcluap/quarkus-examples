@@ -53,27 +53,6 @@ public class ReactiveScenariosTest {
     }
 
     @Test
-    public void testPutOnPutAndPostMethod() {
-        given().contentType(ContentType.TEXT)
-                .body("")
-                .put("/postandput")
-                .then()
-                .statusCode(200)
-                .body(is("OK"));
-    }
-
-    @Test
-    public void testPostOnPutAndPostMethod() {
-        given().contentType(ContentType.TEXT)
-                .body("")
-                .post("/postandput")
-                .then()
-                .statusCode(200)
-                .body(is("OK"));
-    }
-
-    
-    @Test
     public void testFilterAbortingWithByteArray() {
         given()
                 .header("prematchresponse", "yes")

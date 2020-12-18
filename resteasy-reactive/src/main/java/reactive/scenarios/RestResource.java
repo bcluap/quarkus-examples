@@ -78,19 +78,6 @@ public class RestResource {
         return test;
     }
 
-     /*
-    NOTE: Only the POST is bound to this method in reactive mode
-    */
-    @POST
-    @PUT
-    @Path("/postandput")
-    @Consumes(MediaType.TEXT_PLAIN)
-    @Produces(MediaType.TEXT_PLAIN)
-    public String methodNotBoundForPutInReactiveMode(String test) {
-        return "OK";
-    }
-    
-    
     @GET
     @Path("/dummypath")
     @Consumes(MediaType.WILDCARD)

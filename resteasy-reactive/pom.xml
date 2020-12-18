@@ -36,7 +36,7 @@
             <groupId>io.quarkus</groupId>
             <artifactId>quarkus-resteasy-reactive-jackson</artifactId>
         </dependency>
-         <!-- Uncomment for normal mode -->
+        <!-- Uncomment for normal mode -->
         <!--dependency>
             <groupId>io.quarkus</groupId>
             <artifactId>quarkus-resteasy</artifactId>
@@ -46,6 +46,10 @@
             <artifactId>quarkus-resteasy-jackson</artifactId>
         </dependency-->
 
+        <dependency>
+            <groupId>io.quarkus</groupId>
+            <artifactId>quarkus-smallrye-opentracing</artifactId>
+        </dependency>
         
         <!-- Test dependencies -->
         <!-- Dependencies specific to this Microservice -->
