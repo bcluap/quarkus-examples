@@ -5,6 +5,7 @@
  */
 package reactive.scenarios;
 
+import io.smallrye.common.annotation.Blocking;
 import java.math.BigDecimal;
 import java.util.List;
 import javax.enterprise.context.ApplicationScoped;
@@ -79,6 +80,7 @@ public class RestResource {
     }
 
     @GET
+    @Blocking
     @Path("/dummypath")
     @Consumes(MediaType.WILDCARD)
     @Produces(MediaType.WILDCARD)
