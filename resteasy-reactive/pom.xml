@@ -8,7 +8,7 @@
     <version>1.0.0</version>
     
     <properties>
-        <quarkus.version>1.11.0.Beta2</quarkus.version>
+        <quarkus.version>1.11.0.Beta1</quarkus.version>
         <compiler-plugin.version>3.8.0</compiler-plugin.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
@@ -27,30 +27,18 @@
     </dependencyManagement>
 
     <dependencies>
-        <!-- Uncomment for reactive mode -->
         <dependency>
-            <groupId>io.quarkus</groupId>
-            <artifactId>quarkus-resteasy-reactive</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>io.quarkus</groupId>
-            <artifactId>quarkus-resteasy-reactive-jackson</artifactId>
-        </dependency>
-        <!-- Uncomment for normal mode -->
-        <!--dependency>
             <groupId>io.quarkus</groupId>
             <artifactId>quarkus-resteasy</artifactId>
         </dependency>
         <dependency>
             <groupId>io.quarkus</groupId>
             <artifactId>quarkus-resteasy-jackson</artifactId>
-        </dependency-->
-
-        <dependency>
+        </dependency>
+        <!--dependency>
             <groupId>io.quarkus</groupId>
             <artifactId>quarkus-smallrye-opentracing</artifactId>
-        </dependency>
-        
+        </dependency-->
         <!-- Test dependencies -->
         <!-- Dependencies specific to this Microservice -->
         <dependency>
