@@ -14,6 +14,7 @@ import javax.ws.rs.core.Application;
  * @author Paul Carter-Brown
  */
 
+@Blocking
 public class ApplicationConfig extends Application {
 
 }
