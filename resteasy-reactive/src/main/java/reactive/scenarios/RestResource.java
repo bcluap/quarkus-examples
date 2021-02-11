@@ -5,9 +5,17 @@
  */
 package reactive.scenarios;
 
+import com.fasterxml.jackson.core.JsonGenerator;
+import com.fasterxml.jackson.databind.JsonSerializer;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.SerializerProvider;
+import com.fasterxml.jackson.databind.module.SimpleModule;
+import java.io.IOException;
+import java.time.ZonedDateTime;
+import javax.annotation.PostConstruct;
 import javax.enterprise.context.ApplicationScoped;
-import javax.ws.rs.Consumes;
-import javax.ws.rs.POST;
+import javax.inject.Inject;
+import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
@@ -22,16 +30,31 @@ import org.slf4j.LoggerFactory;
 @Path("/")
 public class RestResource {
 
-     private static final Logger log = LoggerFactory.getLogger(RestResource.class);
-     
-
-    @POST
-    @Path("/test")
-    @Consumes(MediaType.TEXT_PLAIN)
-    @Produces(MediaType.TEXT_PLAIN)
-    public String go(String s) {
-        log.warn("Body is [{}]", s);
-        return s;
+    private static final Logger log = LoggerFactory.getLogger(RestResource.class);
+    @Inject
+    ObjectMapper jacksonMapper;
+    
+    @PostConstruct
+    void init() {
+        log.info("Configuring Jackson mapper 2 [{}]", jacksonMapper);
+        SimpleModule module = new SimpleModule();
+        module.addSerializer(ZonedDateTime.class, new JsonSerializer<ZonedDateTime>() {
+            @Override
+            public void serialize(ZonedDateTime t, JsonGenerator jg, SerializerProvider sp) throws IOException {
+                jg.writeString("aaa");
+            }
+            
+        });
+        jacksonMapper.registerModule(module);
     }
+    
+    @GET
+    @Path("dt")
+    @Produces(MediaType.APPLICATION_JSON)
+    public MyData get() {
+        return new MyData();
+    }
+
+    
 
 }
