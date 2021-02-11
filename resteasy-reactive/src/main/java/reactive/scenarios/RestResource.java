@@ -36,7 +36,7 @@ public class RestResource {
     
     @PostConstruct
     void init() {
-        log.info("Configuring Jackson mapper 2 [{}]", jacksonMapper);
+        log.info("Configuring Jackson mapper [{}]", jacksonMapper);
         SimpleModule module = new SimpleModule();
         module.addSerializer(ZonedDateTime.class, new JsonSerializer<ZonedDateTime>() {
             @Override
