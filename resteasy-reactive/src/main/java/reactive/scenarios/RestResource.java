@@ -5,16 +5,7 @@
  */
 package reactive.scenarios;
 
-import com.fasterxml.jackson.core.JsonGenerator;
-import com.fasterxml.jackson.databind.JsonSerializer;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.SerializerProvider;
-import com.fasterxml.jackson.databind.module.SimpleModule;
-import java.io.IOException;
-import java.time.ZonedDateTime;
-import javax.annotation.PostConstruct;
 import javax.enterprise.context.ApplicationScoped;
-import javax.inject.Inject;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
@@ -31,22 +22,7 @@ import org.slf4j.LoggerFactory;
 public class RestResource {
 
     private static final Logger log = LoggerFactory.getLogger(RestResource.class);
-    @Inject
-    ObjectMapper jacksonMapper;
     
-    @PostConstruct
-    void init() {
-        log.info("Configuring Jackson mapper [{}]", jacksonMapper);
-        SimpleModule module = new SimpleModule();
-        module.addSerializer(ZonedDateTime.class, new JsonSerializer<ZonedDateTime>() {
-            @Override
-            public void serialize(ZonedDateTime t, JsonGenerator jg, SerializerProvider sp) throws IOException {
-                jg.writeString("aaa");
-            }
-            
-        });
-        jacksonMapper.registerModule(module);
-    }
     
     @GET
     @Path("dt")
