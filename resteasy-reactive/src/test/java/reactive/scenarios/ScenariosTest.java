@@ -15,30 +15,13 @@ public class ScenariosTest {
 
     @Test
     public void test1() {
+        // 30'th leaf on the 4'th branch of tree 10
         given()
-                .get("/sr/1/2/3")
+                .get("/trees/10/branches/4/leaves/30")
                 .then()
                 .statusCode(200)
-                .body(is("1.2.3"));
+                .body(is("10.4.30"));
     }
 
-    @Test
-    public void test2() {
-        given()
-                .get("/sr/1/l2/2")
-                .then()
-                .statusCode(200)
-                .body(is("1.2"));
-    }
-
-    @Test
-    public void test3() {
-        given()
-                .get("/sr/1/2/l3/3")
-                .then()
-                .statusCode(200)
-                .body(is("1.2.3"));
-
-    }
 
 }

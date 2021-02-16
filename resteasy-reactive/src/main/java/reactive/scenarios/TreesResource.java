@@ -19,16 +19,17 @@ import org.slf4j.LoggerFactory;
  */
 @ApplicationScoped
 @Path("/")
-public class RestResourceL1 {
+public class TreesResource {
 
-    private static final Logger log = LoggerFactory.getLogger(RestResourceL1.class);
+    private static final Logger log = LoggerFactory.getLogger(TreesResource.class);
     
     @Inject
-    RestResourceL2 l2;
+    BranchesResource branches;
     
-    @Path("/sr/{id1}")
-    public RestResourceL2 get(@PathParam("id1") long id1) {
-        return l2;
+    @Path("/trees/{treeId}/branches")
+    public BranchesResource getBranchesOnTree(@PathParam("treeId") long treeId) {
+        log.info("I see tree Id [{}]", treeId);
+        return branches;
     }
 
     

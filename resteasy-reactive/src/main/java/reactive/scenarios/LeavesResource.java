@@ -19,22 +19,18 @@ import org.slf4j.LoggerFactory;
  * @author paul
  */
 @ApplicationScoped
-public class RestResourceL3 {
+public class LeavesResource {
 
-    private static final Logger log = LoggerFactory.getLogger(RestResourceL3.class);
+    private static final Logger log = LoggerFactory.getLogger(LeavesResource.class);
     
     
-    @Path("l3/{id3}")
-    @GET
-    public String getA(@PathParam("id1") long id1, @PathParam("id2") long id2, @PathParam("id3") long id3) {
-        return id1 + "." + id2 + "." + id3;
-    }
     
     @GET
-    @Path("{id3}")
+    @Path("{leafId}")
     @Produces(MediaType.TEXT_PLAIN)
-    public String get(@PathParam("id1") long id1, @PathParam("id2") long id2, @PathParam("id3") long id3) {
-        return id1 + "." + id2 + "." + id3;
+    public String get(@PathParam("treeId") long treeId, @PathParam("branchId") long branchId, @PathParam("leafId") long leafId) {
+        log.info("I see tree Id [{}] and branch Id [{}] and leaf id [{}]", treeId, branchId, leafId);
+        return treeId + "." + branchId + "." + leafId;
     }
 
     
