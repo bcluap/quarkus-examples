@@ -14,14 +14,31 @@ public class ScenariosTest {
     private static final Logger log = LoggerFactory.getLogger(ScenariosTest.class);
 
     @Test
-    public void testDt() {
-        
+    public void test1() {
         given()
-                .get("/dt")
+                .get("/sr/1/2/3")
                 .then()
                 .statusCode(200)
-                .body(is("{\"dt\":\"aaa\"}"));
+                .body(is("1.2.3"));
     }
 
+    @Test
+    public void test2() {
+        given()
+                .get("/sr/1/l2/2")
+                .then()
+                .statusCode(200)
+                .body(is("1.2"));
+    }
+
+    @Test
+    public void test3() {
+        given()
+                .get("/sr/1/2/l3/3")
+                .then()
+                .statusCode(200)
+                .body(is("1.2.3"));
+
+    }
 
 }

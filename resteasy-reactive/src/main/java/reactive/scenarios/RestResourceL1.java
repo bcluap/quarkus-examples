@@ -6,10 +6,10 @@
 package reactive.scenarios;
 
 import javax.enterprise.context.ApplicationScoped;
+import javax.inject.Inject;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
-import javax.ws.rs.Produces;
-import javax.ws.rs.core.MediaType;
+import javax.ws.rs.PathParam;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -19,16 +19,16 @@ import org.slf4j.LoggerFactory;
  */
 @ApplicationScoped
 @Path("/")
-public class RestResource {
+public class RestResourceL1 {
 
-    private static final Logger log = LoggerFactory.getLogger(RestResource.class);
+    private static final Logger log = LoggerFactory.getLogger(RestResourceL1.class);
     
+    @Inject
+    RestResourceL2 l2;
     
-    @GET
-    @Path("dt")
-    @Produces(MediaType.APPLICATION_JSON)
-    public MyData get() {
-        return new MyData();
+    @Path("/sr/{id1}")
+    public RestResourceL2 get(@PathParam("id1") long id1) {
+        return l2;
     }
 
     
