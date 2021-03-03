@@ -8,7 +8,7 @@
     <version>1.0.0</version>
     
     <properties>
-        <quarkus.version>999-SNAPSHOT</quarkus.version>
+        <quarkus.version>1.12.1.Final</quarkus.version>
         <compiler-plugin.version>3.8.0</compiler-plugin.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
@@ -35,6 +35,10 @@
         <dependency>
             <groupId>io.quarkus</groupId>
             <artifactId>quarkus-resteasy-reactive-jackson</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>commons-io</groupId>
+            <artifactId>commons-io</artifactId>
         </dependency>
         
         <!--dependency>

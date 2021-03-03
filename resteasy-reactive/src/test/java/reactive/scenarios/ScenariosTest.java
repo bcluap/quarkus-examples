@@ -3,8 +3,7 @@ package reactive.scenarios;
 import static io.restassured.RestAssured.given;
 
 import io.quarkus.test.junit.QuarkusTest;
-import static org.hamcrest.CoreMatchers.is;
-import static org.hamcrest.Matchers.endsWith;
+import io.restassured.http.ContentType;
 import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -16,22 +15,13 @@ public class ScenariosTest {
 
     @Test
     public void test1() {
-        // 50'th cell of the 30'th leaf on the 4'th branch of tree 10
         given()
-                .get("/tenants/1/wallets/2")
+                .body("{}")
+                .accept(ContentType.JSON)
+                .contentType(ContentType.JSON)
+                .post("/tenants/")
                 .then()
-                .statusCode(200)
-                .body(is("1-2"));
+                .statusCode(200);
     }
     
-    @Test
-    public void test2() {
-        given()
-                .get("/tenants/test?aaa=111&bbb=222")
-                .then()
-                .statusCode(200)
-                .body(endsWith("/tenants/test?aaa=111&bbb=222"));
-    }
-
-
 }
