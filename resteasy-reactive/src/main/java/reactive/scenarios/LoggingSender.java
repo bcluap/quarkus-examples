@@ -32,7 +32,7 @@ public class LoggingSender implements Sender {
     @Override
     public int append(JaegerSpan span) throws SenderException {
         log.info("Received span to send [{}] with Tags [{}]", span, span.getTags());
-        assertTrue(span.getOperationName().contains("POST:reactive.scenarios.TestSubResource.processPost"), "Servicename is " + span.getOperationName() + " instead of POST:reactive.scenarios.TestSubResource.processPost");
+        assertTrue(span.getOperationName().contains("POST:reactive.scenarios.TestSubResource.processPost"), "Operationname is " + span.getOperationName() + " instead of POST:reactive.scenarios.TestSubResource.processPost");
         assertTrue(span.getTags().containsKey("filterInTestTag"), "No tag filterInTestTag found");
         assertTrue(span.getTags().containsKey("filterOutTestTag"), "No tag filterOutTestTag found");
         assertTrue(span.getTags().containsKey("aroundReadFromTestTag"), "No tag aroundReadFromTestTag found");
