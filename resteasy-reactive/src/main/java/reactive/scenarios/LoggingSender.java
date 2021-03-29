@@ -16,7 +16,6 @@ package reactive.scenarios;
 import io.jaegertracing.internal.JaegerSpan;
 import io.jaegertracing.internal.exceptions.SenderException;
 import io.jaegertracing.spi.Sender;
-import io.smallrye.common.constraint.Assert;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
