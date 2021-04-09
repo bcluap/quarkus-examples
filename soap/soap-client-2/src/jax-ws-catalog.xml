@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<catalog xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog" prefer="system">
+    <system systemId="https://switch.acs.altech.co.za/VoucherSystem.asmx?wsdl" uri="wsdl/switch.acs.altech.co.za/VoucherSystem.wsdl"/>
+</catalog>

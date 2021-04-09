@@ -1,0 +1,1408 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:s1="http://tempuri.org/AbstractTypes" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="Login">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Username" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Password" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="LoginResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="LoginResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="OperatorList">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SessionID" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="OperatorListResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="OperatorListResult" type="tns:ArrayOfOperators" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfOperators">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Operators" nillable="true" type="tns:Operators" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Operators">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="OperatorName" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GroupList">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SessionID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Operatorname" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GroupListResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GroupListResult" type="tns:ArrayOfGroups" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfGroups">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Groups" nillable="true" type="tns:Groups" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Groups">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="GroupName" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="VoucherList">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SessionID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="SelectedGroup" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="OperatorName" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="VoucherListResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="VoucherListResult" type="tns:ArrayOfVouchers" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfVouchers">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Vouchers" nillable="true" type="tns:Vouchers" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Vouchers">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="VoucherCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="VoucherName" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="VoucherAmount" type="s:decimal" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="PurchaseOnAccount">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SessionID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="MSISDN" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="IDNumber" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="PIN" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="VoucherCode" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="PinLessAmt" type="s:decimal" />
+            <s:element minOccurs="0" maxOccurs="1" name="ForMSISDN" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="SendSMS" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="OwnReferenceNr" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PurchaseOnAccountResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="PurchaseOnAccountResult" type="tns:PurchaseResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="PurchaseResponse">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="PurchaseResponseCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PurchaseResponseText" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="NetworkResponseCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="NetworkResponseText" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="VoucherCode" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="AvailableBalance" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="ReferenceNumber" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="PurchaseOnPayD">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SessionID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="MSISDN" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="VoucherCode" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="PinLessAmt" type="s:decimal" />
+            <s:element minOccurs="0" maxOccurs="1" name="ForMSISDN" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="SendSMS" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="OwnReferenceNr" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PurchaseOnPayDResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="PurchaseOnPayDResult" type="tns:PurchaseResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CompleteVoucherList">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SessionID" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CompleteVoucherListResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CompleteVoucherListResult" type="tns:ArrayOfVoucherItem" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfVoucherItem">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="VoucherItem" nillable="true" type="tns:VoucherItem" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="VoucherItem">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="OperatorName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="GroupName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="VoucherCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="VoucherName" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="VoucherAmount" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsPinless" type="s:boolean" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="BeneficiaryList">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SessionID" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="BeneficiaryListResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="BeneficiaryListResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddBeneficiary">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SessionID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="MSISDN" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Fullname" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddBeneficiaryResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="AddBeneficiaryResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateBeneficiaryName">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SessionID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="MSISDN" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Fullname" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateBeneficiaryNameResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UpdateBeneficiaryNameResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RemoveBeneficiary">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SessionID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="MSISDN" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RemoveBeneficiaryResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="RemoveBeneficiaryResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="LogOut">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SessionID" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="LogOutResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="LogOutResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetSessionIDandUnqNr">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetSessionIDandUnqNrResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetSessionIDandUnqNrResult" type="tns:ABSASession" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ABSASession">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="SessionID" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="UniqueNr" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="OneSession">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CRC" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="VoucherCode" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="VoucherValue" type="s:double" />
+            <s:element minOccurs="1" maxOccurs="1" name="PinlessAmount" type="s:double" />
+            <s:element minOccurs="0" maxOccurs="1" name="MobileSendTo" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ownRfNr" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="resultCode" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="OneSessionResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="Electricity_ConfirmMeter">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SessionID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="OwnRefNr" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="MeterNumber" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="Amount" type="s:double" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Electricity_ConfirmMeterResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Electricity_ConfirmMeterResult" type="tns:Electricity_ConfirmMeter_class" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="Electricity_ConfirmMeter_class">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="transactionReferenceId" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="arrears" type="s:double" />
+          <s:element minOccurs="0" maxOccurs="1" name="utilityName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="customer" type="tns:Electricity_Customer_class" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Electricity_Customer_class">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="customerName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="customerAddress" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="standNumber" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="areaName" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="Electricity_MakePurchase">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SessionID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="TransactionReference" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="OwnMSISDN" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="PIN" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="Sms" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="SMStoMSISDN" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Electricity_MakePurchaseResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Electricity_MakePurchaseResult" type="tns:Electricity_MakePurchase_class" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="Electricity_MakePurchase_class">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="unqrefnr" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="transactionReferenceId" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="reference" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="receiptNumber" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="tarrifName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="accountNumber" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="reprint" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="utilityName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="customerMessage" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="vatNumber" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="operatorName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="processorName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="meter" type="tns:Electricity_Meter_class" />
+          <s:element minOccurs="0" maxOccurs="1" name="customer" type="tns:Electricity_Customer_class" />
+          <s:element minOccurs="0" maxOccurs="1" name="tokens" type="tns:ArrayOfElectricity_Token_class" />
+          <s:element minOccurs="0" maxOccurs="1" name="bssToken" type="tns:ArrayOfElectricity_Token_class" />
+          <s:element minOccurs="0" maxOccurs="1" name="debts" type="tns:ArrayOfElectricity_Debts_class" />
+          <s:element minOccurs="0" maxOccurs="1" name="fixedCosts" type="tns:ArrayOfElectricity_FixedCosts_class" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Electricity_Meter_class">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="meterNumber" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SGC" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="KRN" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TI" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ALG" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TT" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfElectricity_Token_class">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Electricity_Token_class" nillable="true" type="tns:Electricity_Token_class" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Electricity_Token_class">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="number" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="amount" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="tax" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="units" type="s:double" />
+          <s:element minOccurs="0" maxOccurs="1" name="receipt" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="date" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="description" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="tarrif" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="receiptReference" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="sortOrder" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="tarrifBlock" type="tns:ArrayOfElectricity_TarrifBlock_class" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfElectricity_TarrifBlock_class">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Electricity_TarrifBlock_class" nillable="true" type="tns:Electricity_TarrifBlock_class" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Electricity_TarrifBlock_class">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="amount" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="units" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="costPerUnit" type="s:double" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfElectricity_Debts_class">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Electricity_Debts_class" nillable="true" type="tns:Electricity_Debts_class" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Electricity_Debts_class">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="reason" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="amount" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="tax" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="remain" type="s:double" />
+          <s:element minOccurs="0" maxOccurs="1" name="receipt" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="receiptNumber" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfElectricity_FixedCosts_class">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Electricity_FixedCosts_class" nillable="true" type="tns:Electricity_FixedCosts_class" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Electricity_FixedCosts_class">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="reason" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="amount" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="tax" type="s:double" />
+          <s:element minOccurs="0" maxOccurs="1" name="receipt" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="receiptNumber" type="s:long" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="QryAccountBal">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SessionID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="OwnMSISDN" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="PIN" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="QryAccountBalResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="QryAccountBalResult" type="s:decimal" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Electricity_GetPin">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SessionID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="OwnMSISDN" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Electricity_GetPinResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Electricity_GetPinResult" type="tns:Electricity_GetPin_class" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="Electricity_GetPin_class">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="SessionID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Pin" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="AcceptPayment">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SessionID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="AccountNumber" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="TransactionDateTime" type="s:dateTime" />
+            <s:element minOccurs="1" maxOccurs="1" name="Amount" type="s:double" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AcceptPaymentResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="AcceptPaymentResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>            
+      <s:element name="PurchaseOnAccountJSON">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SessionID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="MSISDN" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="IDNumber" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="PIN" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="VoucherCode" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="PinLessAmt" type="s:decimal" />
+            <s:element minOccurs="0" maxOccurs="1" name="ForMSISDN" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="SendSMS" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="OwnReferenceNr" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PurchaseOnAccountJSONResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="CompleteVoucherListJSON">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SessionID" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CompleteVoucherListJSONResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="string" nillable="true" type="s:string" />
+      <s:element name="ArrayOfOperators" nillable="true" type="tns:ArrayOfOperators" />
+      <s:element name="ArrayOfGroups" nillable="true" type="tns:ArrayOfGroups" />
+      <s:element name="ArrayOfVouchers" nillable="true" type="tns:ArrayOfVouchers" />
+      <s:element name="PurchaseResponse" nillable="true" type="tns:PurchaseResponse" />
+      <s:element name="ArrayOfVoucherItem" nillable="true" type="tns:ArrayOfVoucherItem" />
+      <s:element name="base64Binary" nillable="true" type="s:base64Binary" />
+      <s:element name="ABSASession" nillable="true" type="tns:ABSASession" />
+      <s:element name="Electricity_ConfirmMeter_class" nillable="true" type="tns:Electricity_ConfirmMeter_class" />
+      <s:element name="Electricity_MakePurchase_class" nillable="true" type="tns:Electricity_MakePurchase_class" />
+      <s:element name="decimal" type="s:decimal" />
+      <s:element name="Electricity_GetPin_class" nillable="true" type="tns:Electricity_GetPin_class" />
+      <s:element name="int" type="s:int" />
+    </s:schema>
+    
+  </wsdl:types>
+  <wsdl:message name="LoginSoapIn">
+    <wsdl:part name="parameters" element="tns:Login" />
+  </wsdl:message>
+  <wsdl:message name="LoginSoapOut">
+    <wsdl:part name="parameters" element="tns:LoginResponse" />
+  </wsdl:message>
+  <wsdl:message name="OperatorListSoapIn">
+    <wsdl:part name="parameters" element="tns:OperatorList" />
+  </wsdl:message>
+  <wsdl:message name="OperatorListSoapOut">
+    <wsdl:part name="parameters" element="tns:OperatorListResponse" />
+  </wsdl:message>
+  <wsdl:message name="GroupListSoapIn">
+    <wsdl:part name="parameters" element="tns:GroupList" />
+  </wsdl:message>
+  <wsdl:message name="GroupListSoapOut">
+    <wsdl:part name="parameters" element="tns:GroupListResponse" />
+  </wsdl:message>
+  <wsdl:message name="VoucherListSoapIn">
+    <wsdl:part name="parameters" element="tns:VoucherList" />
+  </wsdl:message>
+  <wsdl:message name="VoucherListSoapOut">
+    <wsdl:part name="parameters" element="tns:VoucherListResponse" />
+  </wsdl:message>
+  <wsdl:message name="PurchaseOnAccountSoapIn">
+    <wsdl:part name="parameters" element="tns:PurchaseOnAccount" />
+  </wsdl:message>
+  <wsdl:message name="PurchaseOnAccountSoapOut">
+    <wsdl:part name="parameters" element="tns:PurchaseOnAccountResponse" />
+  </wsdl:message>
+  <wsdl:message name="PurchaseOnPayDSoapIn">
+    <wsdl:part name="parameters" element="tns:PurchaseOnPayD" />
+  </wsdl:message>
+  <wsdl:message name="PurchaseOnPayDSoapOut">
+    <wsdl:part name="parameters" element="tns:PurchaseOnPayDResponse" />
+  </wsdl:message>
+  <wsdl:message name="CompleteVoucherListSoapIn">
+    <wsdl:part name="parameters" element="tns:CompleteVoucherList" />
+  </wsdl:message>
+  <wsdl:message name="CompleteVoucherListSoapOut">
+    <wsdl:part name="parameters" element="tns:CompleteVoucherListResponse" />
+  </wsdl:message>
+  <wsdl:message name="BeneficiaryListSoapIn">
+    <wsdl:part name="parameters" element="tns:BeneficiaryList" />
+  </wsdl:message>
+  <wsdl:message name="BeneficiaryListSoapOut">
+    <wsdl:part name="parameters" element="tns:BeneficiaryListResponse" />
+  </wsdl:message>
+  <wsdl:message name="AddBeneficiarySoapIn">
+    <wsdl:part name="parameters" element="tns:AddBeneficiary" />
+  </wsdl:message>
+  <wsdl:message name="AddBeneficiarySoapOut">
+    <wsdl:part name="parameters" element="tns:AddBeneficiaryResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpdateBeneficiaryNameSoapIn">
+    <wsdl:part name="parameters" element="tns:UpdateBeneficiaryName" />
+  </wsdl:message>
+  <wsdl:message name="UpdateBeneficiaryNameSoapOut">
+    <wsdl:part name="parameters" element="tns:UpdateBeneficiaryNameResponse" />
+  </wsdl:message>
+  <wsdl:message name="RemoveBeneficiarySoapIn">
+    <wsdl:part name="parameters" element="tns:RemoveBeneficiary" />
+  </wsdl:message>
+  <wsdl:message name="RemoveBeneficiarySoapOut">
+    <wsdl:part name="parameters" element="tns:RemoveBeneficiaryResponse" />
+  </wsdl:message>
+  <wsdl:message name="LogOutSoapIn">
+    <wsdl:part name="parameters" element="tns:LogOut" />
+  </wsdl:message>
+  <wsdl:message name="LogOutSoapOut">
+    <wsdl:part name="parameters" element="tns:LogOutResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetSessionIDandUnqNrSoapIn">
+    <wsdl:part name="parameters" element="tns:GetSessionIDandUnqNr" />
+  </wsdl:message>
+  <wsdl:message name="GetSessionIDandUnqNrSoapOut">
+    <wsdl:part name="parameters" element="tns:GetSessionIDandUnqNrResponse" />
+  </wsdl:message>
+  <wsdl:message name="OneSessionSoapIn">
+    <wsdl:part name="parameters" element="tns:OneSession" />
+  </wsdl:message>
+  <wsdl:message name="OneSessionSoapOut">
+    <wsdl:part name="parameters" element="tns:OneSessionResponse" />
+  </wsdl:message>
+  <wsdl:message name="Electricity_ConfirmMeterSoapIn">
+    <wsdl:part name="parameters" element="tns:Electricity_ConfirmMeter" />
+  </wsdl:message>
+  <wsdl:message name="Electricity_ConfirmMeterSoapOut">
+    <wsdl:part name="parameters" element="tns:Electricity_ConfirmMeterResponse" />
+  </wsdl:message>
+  <wsdl:message name="Electricity_MakePurchaseSoapIn">
+    <wsdl:part name="parameters" element="tns:Electricity_MakePurchase" />
+  </wsdl:message>
+  <wsdl:message name="Electricity_MakePurchaseSoapOut">
+    <wsdl:part name="parameters" element="tns:Electricity_MakePurchaseResponse" />
+  </wsdl:message>
+  <wsdl:message name="QryAccountBalSoapIn">
+    <wsdl:part name="parameters" element="tns:QryAccountBal" />
+  </wsdl:message>
+  <wsdl:message name="QryAccountBalSoapOut">
+    <wsdl:part name="parameters" element="tns:QryAccountBalResponse" />
+  </wsdl:message>
+  <wsdl:message name="Electricity_GetPinSoapIn">
+    <wsdl:part name="parameters" element="tns:Electricity_GetPin" />
+  </wsdl:message>
+  <wsdl:message name="Electricity_GetPinSoapOut">
+    <wsdl:part name="parameters" element="tns:Electricity_GetPinResponse" />
+  </wsdl:message>
+  <wsdl:message name="AcceptPaymentSoapIn">
+    <wsdl:part name="parameters" element="tns:AcceptPayment" />
+  </wsdl:message>
+  <wsdl:message name="AcceptPaymentSoapOut">
+    <wsdl:part name="parameters" element="tns:AcceptPaymentResponse" />
+  </wsdl:message>
+  <wsdl:message name="PurchaseOnAccountJSONSoapIn">
+    <wsdl:part name="parameters" element="tns:PurchaseOnAccountJSON" />
+  </wsdl:message>
+  <wsdl:message name="PurchaseOnAccountJSONSoapOut">
+    <wsdl:part name="parameters" element="tns:PurchaseOnAccountJSONResponse" />
+  </wsdl:message>
+  <wsdl:message name="CompleteVoucherListJSONSoapIn">
+    <wsdl:part name="parameters" element="tns:CompleteVoucherListJSON" />
+  </wsdl:message>
+  <wsdl:message name="CompleteVoucherListJSONSoapOut">
+    <wsdl:part name="parameters" element="tns:CompleteVoucherListJSONResponse" />
+  </wsdl:message>
+  <wsdl:message name="LoginHttpGetIn">
+    <wsdl:part name="Username" type="s:string" />
+    <wsdl:part name="Password" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="LoginHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="OperatorListHttpGetIn">
+    <wsdl:part name="SessionID" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="OperatorListHttpGetOut">
+    <wsdl:part name="Body" element="tns:ArrayOfOperators" />
+  </wsdl:message>
+  <wsdl:message name="GroupListHttpGetIn">
+    <wsdl:part name="SessionID" type="s:string" />
+    <wsdl:part name="Operatorname" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GroupListHttpGetOut">
+    <wsdl:part name="Body" element="tns:ArrayOfGroups" />
+  </wsdl:message>
+  <wsdl:message name="VoucherListHttpGetIn">
+    <wsdl:part name="SessionID" type="s:string" />
+    <wsdl:part name="SelectedGroup" type="s:string" />
+    <wsdl:part name="OperatorName" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="VoucherListHttpGetOut">
+    <wsdl:part name="Body" element="tns:ArrayOfVouchers" />
+  </wsdl:message>
+  <wsdl:message name="PurchaseOnAccountHttpGetIn">
+    <wsdl:part name="SessionID" type="s:string" />
+    <wsdl:part name="MSISDN" type="s:string" />
+    <wsdl:part name="IDNumber" type="s:string" />
+    <wsdl:part name="PIN" type="s:string" />
+    <wsdl:part name="VoucherCode" type="s:string" />
+    <wsdl:part name="PinLessAmt" type="s:string" />
+    <wsdl:part name="ForMSISDN" type="s:string" />
+    <wsdl:part name="SendSMS" type="s:string" />
+    <wsdl:part name="OwnReferenceNr" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="PurchaseOnAccountHttpGetOut">
+    <wsdl:part name="Body" element="tns:PurchaseResponse" />
+  </wsdl:message>
+  <wsdl:message name="PurchaseOnPayDHttpGetIn">
+    <wsdl:part name="SessionID" type="s:string" />
+    <wsdl:part name="MSISDN" type="s:string" />
+    <wsdl:part name="VoucherCode" type="s:string" />
+    <wsdl:part name="PinLessAmt" type="s:string" />
+    <wsdl:part name="ForMSISDN" type="s:string" />
+    <wsdl:part name="SendSMS" type="s:string" />
+    <wsdl:part name="OwnReferenceNr" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="PurchaseOnPayDHttpGetOut">
+    <wsdl:part name="Body" element="tns:PurchaseResponse" />
+  </wsdl:message>
+  <wsdl:message name="CompleteVoucherListHttpGetIn">
+    <wsdl:part name="SessionID" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="CompleteVoucherListHttpGetOut">
+    <wsdl:part name="Body" element="tns:ArrayOfVoucherItem" />
+  </wsdl:message>
+  <wsdl:message name="BeneficiaryListHttpGetIn">
+    <wsdl:part name="SessionID" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="BeneficiaryListHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="AddBeneficiaryHttpGetIn">
+    <wsdl:part name="SessionID" type="s:string" />
+    <wsdl:part name="MSISDN" type="s:string" />
+    <wsdl:part name="Fullname" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="AddBeneficiaryHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="UpdateBeneficiaryNameHttpGetIn">
+    <wsdl:part name="SessionID" type="s:string" />
+    <wsdl:part name="MSISDN" type="s:string" />
+    <wsdl:part name="Fullname" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="UpdateBeneficiaryNameHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="RemoveBeneficiaryHttpGetIn">
+    <wsdl:part name="SessionID" type="s:string" />
+    <wsdl:part name="MSISDN" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="RemoveBeneficiaryHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="LogOutHttpGetIn">
+    <wsdl:part name="SessionID" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="LogOutHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetSessionIDandUnqNrHttpGetIn" />
+  <wsdl:message name="GetSessionIDandUnqNrHttpGetOut">
+    <wsdl:part name="Body" element="tns:ABSASession" />
+  </wsdl:message>
+  <wsdl:message name="OneSessionHttpGetIn">
+    <wsdl:part name="CRC" type="s:string" />
+    <wsdl:part name="VoucherCode" type="s:string" />
+    <wsdl:part name="VoucherValue" type="s:string" />
+    <wsdl:part name="PinlessAmount" type="s:string" />
+    <wsdl:part name="MobileSendTo" type="s:string" />
+    <wsdl:part name="ownRfNr" type="s:string" />
+    <wsdl:part name="resultCode" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="OneSessionHttpGetOut" />
+  <wsdl:message name="Electricity_ConfirmMeterHttpGetIn">
+    <wsdl:part name="SessionID" type="s:string" />
+    <wsdl:part name="OwnRefNr" type="s:string" />
+    <wsdl:part name="MeterNumber" type="s:string" />
+    <wsdl:part name="Amount" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="Electricity_ConfirmMeterHttpGetOut">
+    <wsdl:part name="Body" element="tns:Electricity_ConfirmMeter_class" />
+  </wsdl:message>
+  <wsdl:message name="Electricity_MakePurchaseHttpGetIn">
+    <wsdl:part name="SessionID" type="s:string" />
+    <wsdl:part name="TransactionReference" type="s:string" />
+    <wsdl:part name="OwnMSISDN" type="s:string" />
+    <wsdl:part name="PIN" type="s:string" />
+    <wsdl:part name="Sms" type="s:string" />
+    <wsdl:part name="SMStoMSISDN" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="Electricity_MakePurchaseHttpGetOut">
+    <wsdl:part name="Body" element="tns:Electricity_MakePurchase_class" />
+  </wsdl:message>
+  <wsdl:message name="QryAccountBalHttpGetIn">
+    <wsdl:part name="SessionID" type="s:string" />
+    <wsdl:part name="OwnMSISDN" type="s:string" />
+    <wsdl:part name="PIN" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="QryAccountBalHttpGetOut">
+    <wsdl:part name="Body" element="tns:decimal" />
+  </wsdl:message>
+  <wsdl:message name="Electricity_GetPinHttpGetIn">
+    <wsdl:part name="SessionID" type="s:string" />
+    <wsdl:part name="OwnMSISDN" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="Electricity_GetPinHttpGetOut">
+    <wsdl:part name="Body" element="tns:Electricity_GetPin_class" />
+  </wsdl:message>
+  <wsdl:message name="AcceptPaymentHttpGetIn">
+    <wsdl:part name="SessionID" type="s:string" />
+    <wsdl:part name="AccountNumber" type="s:string" />
+    <wsdl:part name="TransactionDateTime" type="s:string" />
+    <wsdl:part name="Amount" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="AcceptPaymentHttpGetOut">
+    <wsdl:part name="Body" element="tns:int" />
+  </wsdl:message>
+  <wsdl:message name="PurchaseOnAccountJSONHttpGetIn">
+    <wsdl:part name="SessionID" type="s:string" />
+    <wsdl:part name="MSISDN" type="s:string" />
+    <wsdl:part name="IDNumber" type="s:string" />
+    <wsdl:part name="PIN" type="s:string" />
+    <wsdl:part name="VoucherCode" type="s:string" />
+    <wsdl:part name="PinLessAmt" type="s:string" />
+    <wsdl:part name="ForMSISDN" type="s:string" />
+    <wsdl:part name="SendSMS" type="s:string" />
+    <wsdl:part name="OwnReferenceNr" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="PurchaseOnAccountJSONHttpGetOut" />
+  <wsdl:message name="CompleteVoucherListJSONHttpGetIn">
+    <wsdl:part name="SessionID" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="CompleteVoucherListJSONHttpGetOut" />
+  <wsdl:message name="LoginHttpPostIn">
+    <wsdl:part name="Username" type="s:string" />
+    <wsdl:part name="Password" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="LoginHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="OperatorListHttpPostIn">
+    <wsdl:part name="SessionID" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="OperatorListHttpPostOut">
+    <wsdl:part name="Body" element="tns:ArrayOfOperators" />
+  </wsdl:message>
+  <wsdl:message name="GroupListHttpPostIn">
+    <wsdl:part name="SessionID" type="s:string" />
+    <wsdl:part name="Operatorname" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GroupListHttpPostOut">
+    <wsdl:part name="Body" element="tns:ArrayOfGroups" />
+  </wsdl:message>
+  <wsdl:message name="VoucherListHttpPostIn">
+    <wsdl:part name="SessionID" type="s:string" />
+    <wsdl:part name="SelectedGroup" type="s:string" />
+    <wsdl:part name="OperatorName" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="VoucherListHttpPostOut">
+    <wsdl:part name="Body" element="tns:ArrayOfVouchers" />
+  </wsdl:message>
+  <wsdl:message name="PurchaseOnAccountHttpPostIn">
+    <wsdl:part name="SessionID" type="s:string" />
+    <wsdl:part name="MSISDN" type="s:string" />
+    <wsdl:part name="IDNumber" type="s:string" />
+    <wsdl:part name="PIN" type="s:string" />
+    <wsdl:part name="VoucherCode" type="s:string" />
+    <wsdl:part name="PinLessAmt" type="s:string" />
+    <wsdl:part name="ForMSISDN" type="s:string" />
+    <wsdl:part name="SendSMS" type="s:string" />
+    <wsdl:part name="OwnReferenceNr" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="PurchaseOnAccountHttpPostOut">
+    <wsdl:part name="Body" element="tns:PurchaseResponse" />
+  </wsdl:message>
+  <wsdl:message name="PurchaseOnPayDHttpPostIn">
+    <wsdl:part name="SessionID" type="s:string" />
+    <wsdl:part name="MSISDN" type="s:string" />
+    <wsdl:part name="VoucherCode" type="s:string" />
+    <wsdl:part name="PinLessAmt" type="s:string" />
+    <wsdl:part name="ForMSISDN" type="s:string" />
+    <wsdl:part name="SendSMS" type="s:string" />
+    <wsdl:part name="OwnReferenceNr" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="PurchaseOnPayDHttpPostOut">
+    <wsdl:part name="Body" element="tns:PurchaseResponse" />
+  </wsdl:message>
+  <wsdl:message name="CompleteVoucherListHttpPostIn">
+    <wsdl:part name="SessionID" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="CompleteVoucherListHttpPostOut">
+    <wsdl:part name="Body" element="tns:ArrayOfVoucherItem" />
+  </wsdl:message>
+  <wsdl:message name="BeneficiaryListHttpPostIn">
+    <wsdl:part name="SessionID" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="BeneficiaryListHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="AddBeneficiaryHttpPostIn">
+    <wsdl:part name="SessionID" type="s:string" />
+    <wsdl:part name="MSISDN" type="s:string" />
+    <wsdl:part name="Fullname" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="AddBeneficiaryHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="UpdateBeneficiaryNameHttpPostIn">
+    <wsdl:part name="SessionID" type="s:string" />
+    <wsdl:part name="MSISDN" type="s:string" />
+    <wsdl:part name="Fullname" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="UpdateBeneficiaryNameHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="RemoveBeneficiaryHttpPostIn">
+    <wsdl:part name="SessionID" type="s:string" />
+    <wsdl:part name="MSISDN" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="RemoveBeneficiaryHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="LogOutHttpPostIn">
+    <wsdl:part name="SessionID" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="LogOutHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetSessionIDandUnqNrHttpPostIn" />
+  <wsdl:message name="GetSessionIDandUnqNrHttpPostOut">
+    <wsdl:part name="Body" element="tns:ABSASession" />
+  </wsdl:message>
+  <wsdl:message name="OneSessionHttpPostIn">
+    <wsdl:part name="CRC" type="s:string" />
+    <wsdl:part name="VoucherCode" type="s:string" />
+    <wsdl:part name="VoucherValue" type="s:string" />
+    <wsdl:part name="PinlessAmount" type="s:string" />
+    <wsdl:part name="MobileSendTo" type="s:string" />
+    <wsdl:part name="ownRfNr" type="s:string" />
+    <wsdl:part name="resultCode" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="OneSessionHttpPostOut" />
+  <wsdl:message name="Electricity_ConfirmMeterHttpPostIn">
+    <wsdl:part name="SessionID" type="s:string" />
+    <wsdl:part name="OwnRefNr" type="s:string" />
+    <wsdl:part name="MeterNumber" type="s:string" />
+    <wsdl:part name="Amount" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="Electricity_ConfirmMeterHttpPostOut">
+    <wsdl:part name="Body" element="tns:Electricity_ConfirmMeter_class" />
+  </wsdl:message>
+  <wsdl:message name="Electricity_MakePurchaseHttpPostIn">
+    <wsdl:part name="SessionID" type="s:string" />
+    <wsdl:part name="TransactionReference" type="s:string" />
+    <wsdl:part name="OwnMSISDN" type="s:string" />
+    <wsdl:part name="PIN" type="s:string" />
+    <wsdl:part name="Sms" type="s:string" />
+    <wsdl:part name="SMStoMSISDN" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="Electricity_MakePurchaseHttpPostOut">
+    <wsdl:part name="Body" element="tns:Electricity_MakePurchase_class" />
+  </wsdl:message>
+  <wsdl:message name="QryAccountBalHttpPostIn">
+    <wsdl:part name="SessionID" type="s:string" />
+    <wsdl:part name="OwnMSISDN" type="s:string" />
+    <wsdl:part name="PIN" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="QryAccountBalHttpPostOut">
+    <wsdl:part name="Body" element="tns:decimal" />
+  </wsdl:message>
+  <wsdl:message name="Electricity_GetPinHttpPostIn">
+    <wsdl:part name="SessionID" type="s:string" />
+    <wsdl:part name="OwnMSISDN" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="Electricity_GetPinHttpPostOut">
+    <wsdl:part name="Body" element="tns:Electricity_GetPin_class" />
+  </wsdl:message>
+  <wsdl:message name="AcceptPaymentHttpPostIn">
+    <wsdl:part name="SessionID" type="s:string" />
+    <wsdl:part name="AccountNumber" type="s:string" />
+    <wsdl:part name="TransactionDateTime" type="s:string" />
+    <wsdl:part name="Amount" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="AcceptPaymentHttpPostOut">
+    <wsdl:part name="Body" element="tns:int" />
+  </wsdl:message>
+  <wsdl:message name="PurchaseOnAccountJSONHttpPostIn">
+    <wsdl:part name="SessionID" type="s:string" />
+    <wsdl:part name="MSISDN" type="s:string" />
+    <wsdl:part name="IDNumber" type="s:string" />
+    <wsdl:part name="PIN" type="s:string" />
+    <wsdl:part name="VoucherCode" type="s:string" />
+    <wsdl:part name="PinLessAmt" type="s:string" />
+    <wsdl:part name="ForMSISDN" type="s:string" />
+    <wsdl:part name="SendSMS" type="s:string" />
+    <wsdl:part name="OwnReferenceNr" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="PurchaseOnAccountJSONHttpPostOut" />
+  <wsdl:message name="CompleteVoucherListJSONHttpPostIn">
+    <wsdl:part name="SessionID" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="CompleteVoucherListJSONHttpPostOut" />
+  <wsdl:portType name="VoucherSystemSoap">
+    <wsdl:operation name="Login">
+      <wsdl:input message="tns:LoginSoapIn" />
+      <wsdl:output message="tns:LoginSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="OperatorList">
+      <wsdl:input message="tns:OperatorListSoapIn" />
+      <wsdl:output message="tns:OperatorListSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GroupList">
+      <wsdl:input message="tns:GroupListSoapIn" />
+      <wsdl:output message="tns:GroupListSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="VoucherList">
+      <wsdl:input message="tns:VoucherListSoapIn" />
+      <wsdl:output message="tns:VoucherListSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PurchaseOnAccount">
+      <wsdl:input message="tns:PurchaseOnAccountSoapIn" />
+      <wsdl:output message="tns:PurchaseOnAccountSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PurchaseOnPayD">
+      <wsdl:input message="tns:PurchaseOnPayDSoapIn" />
+      <wsdl:output message="tns:PurchaseOnPayDSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CompleteVoucherList">
+      <wsdl:input message="tns:CompleteVoucherListSoapIn" />
+      <wsdl:output message="tns:CompleteVoucherListSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="BeneficiaryList">
+      <wsdl:input message="tns:BeneficiaryListSoapIn" />
+      <wsdl:output message="tns:BeneficiaryListSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AddBeneficiary">
+      <wsdl:input message="tns:AddBeneficiarySoapIn" />
+      <wsdl:output message="tns:AddBeneficiarySoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateBeneficiaryName">
+      <wsdl:input message="tns:UpdateBeneficiaryNameSoapIn" />
+      <wsdl:output message="tns:UpdateBeneficiaryNameSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="RemoveBeneficiary">
+      <wsdl:input message="tns:RemoveBeneficiarySoapIn" />
+      <wsdl:output message="tns:RemoveBeneficiarySoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="LogOut">
+      <wsdl:input message="tns:LogOutSoapIn" />
+      <wsdl:output message="tns:LogOutSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetSessionIDandUnqNr">
+      <wsdl:input message="tns:GetSessionIDandUnqNrSoapIn" />
+      <wsdl:output message="tns:GetSessionIDandUnqNrSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="OneSession">
+      <wsdl:input message="tns:OneSessionSoapIn" />
+      <wsdl:output message="tns:OneSessionSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Electricity_ConfirmMeter">
+      <wsdl:input message="tns:Electricity_ConfirmMeterSoapIn" />
+      <wsdl:output message="tns:Electricity_ConfirmMeterSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Electricity_MakePurchase">
+      <wsdl:input message="tns:Electricity_MakePurchaseSoapIn" />
+      <wsdl:output message="tns:Electricity_MakePurchaseSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="QryAccountBal">
+      <wsdl:input message="tns:QryAccountBalSoapIn" />
+      <wsdl:output message="tns:QryAccountBalSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Electricity_GetPin">
+      <wsdl:input message="tns:Electricity_GetPinSoapIn" />
+      <wsdl:output message="tns:Electricity_GetPinSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AcceptPayment">
+      <wsdl:input message="tns:AcceptPaymentSoapIn" />
+      <wsdl:output message="tns:AcceptPaymentSoapOut" />
+    </wsdl:operation>    
+  </wsdl:portType>
+  <wsdl:portType name="VoucherSystemHttpGet">
+    <wsdl:operation name="Login">
+      <wsdl:input message="tns:LoginHttpGetIn" />
+      <wsdl:output message="tns:LoginHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="OperatorList">
+      <wsdl:input message="tns:OperatorListHttpGetIn" />
+      <wsdl:output message="tns:OperatorListHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GroupList">
+      <wsdl:input message="tns:GroupListHttpGetIn" />
+      <wsdl:output message="tns:GroupListHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="VoucherList">
+      <wsdl:input message="tns:VoucherListHttpGetIn" />
+      <wsdl:output message="tns:VoucherListHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PurchaseOnAccount">
+      <wsdl:input message="tns:PurchaseOnAccountHttpGetIn" />
+      <wsdl:output message="tns:PurchaseOnAccountHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PurchaseOnPayD">
+      <wsdl:input message="tns:PurchaseOnPayDHttpGetIn" />
+      <wsdl:output message="tns:PurchaseOnPayDHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CompleteVoucherList">
+      <wsdl:input message="tns:CompleteVoucherListHttpGetIn" />
+      <wsdl:output message="tns:CompleteVoucherListHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="BeneficiaryList">
+      <wsdl:input message="tns:BeneficiaryListHttpGetIn" />
+      <wsdl:output message="tns:BeneficiaryListHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AddBeneficiary">
+      <wsdl:input message="tns:AddBeneficiaryHttpGetIn" />
+      <wsdl:output message="tns:AddBeneficiaryHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateBeneficiaryName">
+      <wsdl:input message="tns:UpdateBeneficiaryNameHttpGetIn" />
+      <wsdl:output message="tns:UpdateBeneficiaryNameHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="RemoveBeneficiary">
+      <wsdl:input message="tns:RemoveBeneficiaryHttpGetIn" />
+      <wsdl:output message="tns:RemoveBeneficiaryHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="LogOut">
+      <wsdl:input message="tns:LogOutHttpGetIn" />
+      <wsdl:output message="tns:LogOutHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetSessionIDandUnqNr">
+      <wsdl:input message="tns:GetSessionIDandUnqNrHttpGetIn" />
+      <wsdl:output message="tns:GetSessionIDandUnqNrHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="OneSession">
+      <wsdl:input message="tns:OneSessionHttpGetIn" />
+      <wsdl:output message="tns:OneSessionHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Electricity_ConfirmMeter">
+      <wsdl:input message="tns:Electricity_ConfirmMeterHttpGetIn" />
+      <wsdl:output message="tns:Electricity_ConfirmMeterHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Electricity_MakePurchase">
+      <wsdl:input message="tns:Electricity_MakePurchaseHttpGetIn" />
+      <wsdl:output message="tns:Electricity_MakePurchaseHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="QryAccountBal">
+      <wsdl:input message="tns:QryAccountBalHttpGetIn" />
+      <wsdl:output message="tns:QryAccountBalHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Electricity_GetPin">
+      <wsdl:input message="tns:Electricity_GetPinHttpGetIn" />
+      <wsdl:output message="tns:Electricity_GetPinHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AcceptPayment">
+      <wsdl:input message="tns:AcceptPaymentHttpGetIn" />
+      <wsdl:output message="tns:AcceptPaymentHttpGetOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="VoucherSystemHttpPost">
+    <wsdl:operation name="Login">
+      <wsdl:input message="tns:LoginHttpPostIn" />
+      <wsdl:output message="tns:LoginHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="OperatorList">
+      <wsdl:input message="tns:OperatorListHttpPostIn" />
+      <wsdl:output message="tns:OperatorListHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GroupList">
+      <wsdl:input message="tns:GroupListHttpPostIn" />
+      <wsdl:output message="tns:GroupListHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="VoucherList">
+      <wsdl:input message="tns:VoucherListHttpPostIn" />
+      <wsdl:output message="tns:VoucherListHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PurchaseOnAccount">
+      <wsdl:input message="tns:PurchaseOnAccountHttpPostIn" />
+      <wsdl:output message="tns:PurchaseOnAccountHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PurchaseOnPayD">
+      <wsdl:input message="tns:PurchaseOnPayDHttpPostIn" />
+      <wsdl:output message="tns:PurchaseOnPayDHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CompleteVoucherList">
+      <wsdl:input message="tns:CompleteVoucherListHttpPostIn" />
+      <wsdl:output message="tns:CompleteVoucherListHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="BeneficiaryList">
+      <wsdl:input message="tns:BeneficiaryListHttpPostIn" />
+      <wsdl:output message="tns:BeneficiaryListHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AddBeneficiary">
+      <wsdl:input message="tns:AddBeneficiaryHttpPostIn" />
+      <wsdl:output message="tns:AddBeneficiaryHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateBeneficiaryName">
+      <wsdl:input message="tns:UpdateBeneficiaryNameHttpPostIn" />
+      <wsdl:output message="tns:UpdateBeneficiaryNameHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="RemoveBeneficiary">
+      <wsdl:input message="tns:RemoveBeneficiaryHttpPostIn" />
+      <wsdl:output message="tns:RemoveBeneficiaryHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="LogOut">
+      <wsdl:input message="tns:LogOutHttpPostIn" />
+      <wsdl:output message="tns:LogOutHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetSessionIDandUnqNr">
+      <wsdl:input message="tns:GetSessionIDandUnqNrHttpPostIn" />
+      <wsdl:output message="tns:GetSessionIDandUnqNrHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="OneSession">
+      <wsdl:input message="tns:OneSessionHttpPostIn" />
+      <wsdl:output message="tns:OneSessionHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Electricity_ConfirmMeter">
+      <wsdl:input message="tns:Electricity_ConfirmMeterHttpPostIn" />
+      <wsdl:output message="tns:Electricity_ConfirmMeterHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Electricity_MakePurchase">
+      <wsdl:input message="tns:Electricity_MakePurchaseHttpPostIn" />
+      <wsdl:output message="tns:Electricity_MakePurchaseHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="QryAccountBal">
+      <wsdl:input message="tns:QryAccountBalHttpPostIn" />
+      <wsdl:output message="tns:QryAccountBalHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Electricity_GetPin">
+      <wsdl:input message="tns:Electricity_GetPinHttpPostIn" />
+      <wsdl:output message="tns:Electricity_GetPinHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AcceptPayment">
+      <wsdl:input message="tns:AcceptPaymentHttpPostIn" />
+      <wsdl:output message="tns:AcceptPaymentHttpPostOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+
+
+  <wsdl:binding name="VoucherSystemSoap" type="tns:VoucherSystemSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="Login">
+      <soap:operation soapAction="http://tempuri.org/Login" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="OperatorList">
+      <soap:operation soapAction="http://tempuri.org/OperatorList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GroupList">
+      <soap:operation soapAction="http://tempuri.org/GroupList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="VoucherList">
+      <soap:operation soapAction="http://tempuri.org/VoucherList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PurchaseOnAccount">
+      <soap:operation soapAction="http://tempuri.org/PurchaseOnAccount" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PurchaseOnPayD">
+      <soap:operation soapAction="http://tempuri.org/PurchaseOnPayD" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CompleteVoucherList">
+      <soap:operation soapAction="http://tempuri.org/CompleteVoucherList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BeneficiaryList">
+      <soap:operation soapAction="http://tempuri.org/BeneficiaryList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddBeneficiary">
+      <soap:operation soapAction="http://tempuri.org/AddBeneficiary" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateBeneficiaryName">
+      <soap:operation soapAction="http://tempuri.org/UpdateBeneficiaryName" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RemoveBeneficiary">
+      <soap:operation soapAction="http://tempuri.org/RemoveBeneficiary" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LogOut">
+      <soap:operation soapAction="http://tempuri.org/LogOut" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSessionIDandUnqNr">
+      <soap:operation soapAction="http://tempuri.org/GetSessionIDandUnqNr" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="OneSession">
+      <soap:operation soapAction="http://tempuri.org/OneSession" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Electricity_ConfirmMeter">
+      <soap:operation soapAction="http://tempuri.org/Electricity_ConfirmMeter" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Electricity_MakePurchase">
+      <soap:operation soapAction="http://tempuri.org/Electricity_MakePurchase" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="QryAccountBal">
+      <soap:operation soapAction="http://tempuri.org/QryAccountBal" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Electricity_GetPin">
+      <soap:operation soapAction="http://tempuri.org/Electricity_GetPin" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AcceptPayment">
+      <soap:operation soapAction="http://tempuri.org/AcceptPayment" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="VoucherSystem">
+    <wsdl:port name="VoucherSystemSoap" binding="tns:VoucherSystemSoap">
+      <soap:address location="https://switch.acs.altech.co.za/VoucherSystem.asmx" />
+    </wsdl:port>    
+  </wsdl:service>
+</wsdl:definitions>
