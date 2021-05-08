@@ -1,0 +1,1578 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="https://mobilerechargeapi.gsm.co.za/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" targetNamespace="https://mobilerechargeapi.gsm.co.za/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="https://mobilerechargeapi.gsm.co.za/">
+      <s:element name="GetTotalDealerCredit">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="username" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetTotalDealerCreditResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetTotalDealerCreditResult" type="tns:Dealer" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="Dealer">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Credit" type="s:double" />
+          <s:element minOccurs="0" maxOccurs="1" name="Error" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetNetwork">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="username" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="msisdn" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetNetworkResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetNetworkResult" type="tns:NetworkInfo" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="NetworkInfo">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Id" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Error" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetNetworkList">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="username" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetNetworkListResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetNetworkListResult" type="tns:ArrayOfNetworkInfo" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfNetworkInfo">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="NetworkInfo" nillable="true" type="tns:NetworkInfo" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetVoucherType">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="username" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="networkId" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetVoucherTypeResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetVoucherTypeResult" type="tns:ArrayOfVoucherTypeInfo" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfVoucherTypeInfo">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="VoucherTypeInfo" nillable="true" type="tns:VoucherTypeInfo" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="VoucherTypeInfo">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Id" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="NetworkId" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="FixedAmount" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="Error" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetVoucher">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="username" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="networkId" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="vouchertypeId" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetVoucherResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetVoucherResult" type="tns:ArrayOfVoucherDetails" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfVoucherDetails">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="VoucherDetails" nillable="true" type="tns:VoucherDetails" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="VoucherDetails">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Id" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="MaxAmount" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="MinAmount" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="PinnedVoucher" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="Error" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetCompleteDataCollection">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="username" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="msisdn" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetCompleteDataCollectionResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetCompleteDataCollectionResult" type="tns:Network" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="Network">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Id" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="VoucherTypes" type="tns:ArrayOfVoucherTypes" />
+          <s:element minOccurs="0" maxOccurs="1" name="Error" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfVoucherTypes">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="VoucherTypes" nillable="true" type="tns:VoucherTypes" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="VoucherTypes">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Id" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="NetworkId" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="FixedAmount" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="Vouchers" type="tns:ArrayOfVoucherDetails" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="PerformPinlessRecharge">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="username" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="recipientMsisdn" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="voucherId" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="amount" type="s:decimal" />
+            <s:element minOccurs="0" maxOccurs="1" name="clientRef" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PerformPinlessRechargeResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="PerformPinlessRechargeResult" type="tns:RechargeInfo" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="RechargeInfo">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="VoucherPin" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="OrderRef" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TicketNumber" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="BoxNumber" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="BatchNumber" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="TransactionError" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="Error" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="PerformPinnedRecharge">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="username" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="recipientMsisdn" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="voucherId" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="amount" type="s:decimal" />
+            <s:element minOccurs="0" maxOccurs="1" name="clientRef" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PerformPinnedRechargeResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="PerformPinnedRechargeResult" type="tns:RechargeInfo" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PerformPinnedRechargeWithoutMsisdn">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="username" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="voucherId" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="amount" type="s:decimal" />
+            <s:element minOccurs="0" maxOccurs="1" name="clientRef" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PerformPinnedRechargeWithoutMsisdnResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="PerformPinnedRechargeWithoutMsisdnResult" type="tns:RechargeInfo" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PerformPinlessRechargeFixedAmount">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="username" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="recipientMsisdn" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="voucherId" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="clientRef" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PerformPinlessRechargeFixedAmountResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="PerformPinlessRechargeFixedAmountResult" type="tns:RechargeInfo" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PerformPinnedRechargeFixedAmount">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="username" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="recipientMsisdn" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="voucherId" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="clientRef" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PerformPinnedRechargeFixedAmountResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="PerformPinnedRechargeFixedAmountResult" type="tns:RechargeInfo" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PerformPinnedRechargeWithoutMsisdnFixedAmount">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="username" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="voucherId" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="clientRef" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PerformPinnedRechargeWithoutMsisdnFixedAmountResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="PerformPinnedRechargeWithoutMsisdnFixedAmountResult" type="tns:RechargeInfo" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetUserStatus">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="username" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetUserStatusResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetUserStatusResult" type="tns:UserStatus" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="UserStatus">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Environment" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Enabled" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="Error" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetUserCredit">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="username" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetUserCreditResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetUserCreditResult" type="tns:UserCredit" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="UserCredit">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Id" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="RemainingCredit" type="s:decimal" />
+          <s:element minOccurs="0" maxOccurs="1" name="Error" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetTransactionCount">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="username" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="startDate" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="endDate" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetTransactionCountResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetTransactionCountResult" type="tns:TotalTransaction" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="TotalTransaction">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Start" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="End" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="Transactions" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Error" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetTransactionInfo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="username" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="clientRef" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetTransactionInfoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetTransactionInfoResult" type="tns:TransactionVoucherInfo" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="TransactionVoucherInfo">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="MSISDN" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Amount" type="s:decimal" />
+          <s:element minOccurs="0" maxOccurs="1" name="VoucherType" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="VoucherPin" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TicketNumber" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="OrderRef" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="BoxNumber" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="BatchNumber" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="ExpiryDate" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="Status" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Error" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="Dealer" nillable="true" type="tns:Dealer" />
+      <s:element name="NetworkInfo" nillable="true" type="tns:NetworkInfo" />
+      <s:element name="ArrayOfNetworkInfo" nillable="true" type="tns:ArrayOfNetworkInfo" />
+      <s:element name="ArrayOfVoucherTypeInfo" nillable="true" type="tns:ArrayOfVoucherTypeInfo" />
+      <s:element name="ArrayOfVoucherDetails" nillable="true" type="tns:ArrayOfVoucherDetails" />
+      <s:element name="Network" nillable="true" type="tns:Network" />
+      <s:element name="RechargeInfo" nillable="true" type="tns:RechargeInfo" />
+      <s:element name="UserStatus" nillable="true" type="tns:UserStatus" />
+      <s:element name="UserCredit" nillable="true" type="tns:UserCredit" />
+      <s:element name="TotalTransaction" nillable="true" type="tns:TotalTransaction" />
+      <s:element name="TransactionVoucherInfo" nillable="true" type="tns:TransactionVoucherInfo" />
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="GetTotalDealerCreditSoapIn">
+    <wsdl:part name="parameters" element="tns:GetTotalDealerCredit" />
+  </wsdl:message>
+  <wsdl:message name="GetTotalDealerCreditSoapOut">
+    <wsdl:part name="parameters" element="tns:GetTotalDealerCreditResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetNetworkSoapIn">
+    <wsdl:part name="parameters" element="tns:GetNetwork" />
+  </wsdl:message>
+  <wsdl:message name="GetNetworkSoapOut">
+    <wsdl:part name="parameters" element="tns:GetNetworkResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetNetworkListSoapIn">
+    <wsdl:part name="parameters" element="tns:GetNetworkList" />
+  </wsdl:message>
+  <wsdl:message name="GetNetworkListSoapOut">
+    <wsdl:part name="parameters" element="tns:GetNetworkListResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetVoucherTypeSoapIn">
+    <wsdl:part name="parameters" element="tns:GetVoucherType" />
+  </wsdl:message>
+  <wsdl:message name="GetVoucherTypeSoapOut">
+    <wsdl:part name="parameters" element="tns:GetVoucherTypeResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetVoucherSoapIn">
+    <wsdl:part name="parameters" element="tns:GetVoucher" />
+  </wsdl:message>
+  <wsdl:message name="GetVoucherSoapOut">
+    <wsdl:part name="parameters" element="tns:GetVoucherResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetCompleteDataCollectionSoapIn">
+    <wsdl:part name="parameters" element="tns:GetCompleteDataCollection" />
+  </wsdl:message>
+  <wsdl:message name="GetCompleteDataCollectionSoapOut">
+    <wsdl:part name="parameters" element="tns:GetCompleteDataCollectionResponse" />
+  </wsdl:message>
+  <wsdl:message name="PerformPinlessRechargeSoapIn">
+    <wsdl:part name="parameters" element="tns:PerformPinlessRecharge" />
+  </wsdl:message>
+  <wsdl:message name="PerformPinlessRechargeSoapOut">
+    <wsdl:part name="parameters" element="tns:PerformPinlessRechargeResponse" />
+  </wsdl:message>
+  <wsdl:message name="PerformPinnedRechargeSoapIn">
+    <wsdl:part name="parameters" element="tns:PerformPinnedRecharge" />
+  </wsdl:message>
+  <wsdl:message name="PerformPinnedRechargeSoapOut">
+    <wsdl:part name="parameters" element="tns:PerformPinnedRechargeResponse" />
+  </wsdl:message>
+  <wsdl:message name="PerformPinnedRechargeWithoutMsisdnSoapIn">
+    <wsdl:part name="parameters" element="tns:PerformPinnedRechargeWithoutMsisdn" />
+  </wsdl:message>
+  <wsdl:message name="PerformPinnedRechargeWithoutMsisdnSoapOut">
+    <wsdl:part name="parameters" element="tns:PerformPinnedRechargeWithoutMsisdnResponse" />
+  </wsdl:message>
+  <wsdl:message name="PerformPinlessRechargeFixedAmountSoapIn">
+    <wsdl:part name="parameters" element="tns:PerformPinlessRechargeFixedAmount" />
+  </wsdl:message>
+  <wsdl:message name="PerformPinlessRechargeFixedAmountSoapOut">
+    <wsdl:part name="parameters" element="tns:PerformPinlessRechargeFixedAmountResponse" />
+  </wsdl:message>
+  <wsdl:message name="PerformPinnedRechargeFixedAmountSoapIn">
+    <wsdl:part name="parameters" element="tns:PerformPinnedRechargeFixedAmount" />
+  </wsdl:message>
+  <wsdl:message name="PerformPinnedRechargeFixedAmountSoapOut">
+    <wsdl:part name="parameters" element="tns:PerformPinnedRechargeFixedAmountResponse" />
+  </wsdl:message>
+  <wsdl:message name="PerformPinnedRechargeWithoutMsisdnFixedAmountSoapIn">
+    <wsdl:part name="parameters" element="tns:PerformPinnedRechargeWithoutMsisdnFixedAmount" />
+  </wsdl:message>
+  <wsdl:message name="PerformPinnedRechargeWithoutMsisdnFixedAmountSoapOut">
+    <wsdl:part name="parameters" element="tns:PerformPinnedRechargeWithoutMsisdnFixedAmountResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetUserStatusSoapIn">
+    <wsdl:part name="parameters" element="tns:GetUserStatus" />
+  </wsdl:message>
+  <wsdl:message name="GetUserStatusSoapOut">
+    <wsdl:part name="parameters" element="tns:GetUserStatusResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetUserCreditSoapIn">
+    <wsdl:part name="parameters" element="tns:GetUserCredit" />
+  </wsdl:message>
+  <wsdl:message name="GetUserCreditSoapOut">
+    <wsdl:part name="parameters" element="tns:GetUserCreditResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetTransactionCountSoapIn">
+    <wsdl:part name="parameters" element="tns:GetTransactionCount" />
+  </wsdl:message>
+  <wsdl:message name="GetTransactionCountSoapOut">
+    <wsdl:part name="parameters" element="tns:GetTransactionCountResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetTransactionInfoSoapIn">
+    <wsdl:part name="parameters" element="tns:GetTransactionInfo" />
+  </wsdl:message>
+  <wsdl:message name="GetTransactionInfoSoapOut">
+    <wsdl:part name="parameters" element="tns:GetTransactionInfoResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetTotalDealerCreditHttpGetIn">
+    <wsdl:part name="username" type="s:string" />
+    <wsdl:part name="password" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetTotalDealerCreditHttpGetOut">
+    <wsdl:part name="Body" element="tns:Dealer" />
+  </wsdl:message>
+  <wsdl:message name="GetNetworkHttpGetIn">
+    <wsdl:part name="username" type="s:string" />
+    <wsdl:part name="password" type="s:string" />
+    <wsdl:part name="msisdn" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetNetworkHttpGetOut">
+    <wsdl:part name="Body" element="tns:NetworkInfo" />
+  </wsdl:message>
+  <wsdl:message name="GetNetworkListHttpGetIn">
+    <wsdl:part name="username" type="s:string" />
+    <wsdl:part name="password" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetNetworkListHttpGetOut">
+    <wsdl:part name="Body" element="tns:ArrayOfNetworkInfo" />
+  </wsdl:message>
+  <wsdl:message name="GetVoucherTypeHttpGetIn">
+    <wsdl:part name="username" type="s:string" />
+    <wsdl:part name="password" type="s:string" />
+    <wsdl:part name="networkId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetVoucherTypeHttpGetOut">
+    <wsdl:part name="Body" element="tns:ArrayOfVoucherTypeInfo" />
+  </wsdl:message>
+  <wsdl:message name="GetVoucherHttpGetIn">
+    <wsdl:part name="username" type="s:string" />
+    <wsdl:part name="password" type="s:string" />
+    <wsdl:part name="networkId" type="s:string" />
+    <wsdl:part name="vouchertypeId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetVoucherHttpGetOut">
+    <wsdl:part name="Body" element="tns:ArrayOfVoucherDetails" />
+  </wsdl:message>
+  <wsdl:message name="GetCompleteDataCollectionHttpGetIn">
+    <wsdl:part name="username" type="s:string" />
+    <wsdl:part name="password" type="s:string" />
+    <wsdl:part name="msisdn" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetCompleteDataCollectionHttpGetOut">
+    <wsdl:part name="Body" element="tns:Network" />
+  </wsdl:message>
+  <wsdl:message name="PerformPinlessRechargeHttpGetIn">
+    <wsdl:part name="username" type="s:string" />
+    <wsdl:part name="password" type="s:string" />
+    <wsdl:part name="recipientMsisdn" type="s:string" />
+    <wsdl:part name="voucherId" type="s:string" />
+    <wsdl:part name="amount" type="s:string" />
+    <wsdl:part name="clientRef" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="PerformPinlessRechargeHttpGetOut">
+    <wsdl:part name="Body" element="tns:RechargeInfo" />
+  </wsdl:message>
+  <wsdl:message name="PerformPinnedRechargeHttpGetIn">
+    <wsdl:part name="username" type="s:string" />
+    <wsdl:part name="password" type="s:string" />
+    <wsdl:part name="recipientMsisdn" type="s:string" />
+    <wsdl:part name="voucherId" type="s:string" />
+    <wsdl:part name="amount" type="s:string" />
+    <wsdl:part name="clientRef" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="PerformPinnedRechargeHttpGetOut">
+    <wsdl:part name="Body" element="tns:RechargeInfo" />
+  </wsdl:message>
+  <wsdl:message name="PerformPinnedRechargeWithoutMsisdnHttpGetIn">
+    <wsdl:part name="username" type="s:string" />
+    <wsdl:part name="password" type="s:string" />
+    <wsdl:part name="voucherId" type="s:string" />
+    <wsdl:part name="amount" type="s:string" />
+    <wsdl:part name="clientRef" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="PerformPinnedRechargeWithoutMsisdnHttpGetOut">
+    <wsdl:part name="Body" element="tns:RechargeInfo" />
+  </wsdl:message>
+  <wsdl:message name="PerformPinlessRechargeFixedAmountHttpGetIn">
+    <wsdl:part name="username" type="s:string" />
+    <wsdl:part name="password" type="s:string" />
+    <wsdl:part name="recipientMsisdn" type="s:string" />
+    <wsdl:part name="voucherId" type="s:string" />
+    <wsdl:part name="clientRef" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="PerformPinlessRechargeFixedAmountHttpGetOut">
+    <wsdl:part name="Body" element="tns:RechargeInfo" />
+  </wsdl:message>
+  <wsdl:message name="PerformPinnedRechargeFixedAmountHttpGetIn">
+    <wsdl:part name="username" type="s:string" />
+    <wsdl:part name="password" type="s:string" />
+    <wsdl:part name="recipientMsisdn" type="s:string" />
+    <wsdl:part name="voucherId" type="s:string" />
+    <wsdl:part name="clientRef" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="PerformPinnedRechargeFixedAmountHttpGetOut">
+    <wsdl:part name="Body" element="tns:RechargeInfo" />
+  </wsdl:message>
+  <wsdl:message name="PerformPinnedRechargeWithoutMsisdnFixedAmountHttpGetIn">
+    <wsdl:part name="username" type="s:string" />
+    <wsdl:part name="password" type="s:string" />
+    <wsdl:part name="voucherId" type="s:string" />
+    <wsdl:part name="clientRef" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="PerformPinnedRechargeWithoutMsisdnFixedAmountHttpGetOut">
+    <wsdl:part name="Body" element="tns:RechargeInfo" />
+  </wsdl:message>
+  <wsdl:message name="GetUserStatusHttpGetIn">
+    <wsdl:part name="username" type="s:string" />
+    <wsdl:part name="password" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetUserStatusHttpGetOut">
+    <wsdl:part name="Body" element="tns:UserStatus" />
+  </wsdl:message>
+  <wsdl:message name="GetUserCreditHttpGetIn">
+    <wsdl:part name="username" type="s:string" />
+    <wsdl:part name="password" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetUserCreditHttpGetOut">
+    <wsdl:part name="Body" element="tns:UserCredit" />
+  </wsdl:message>
+  <wsdl:message name="GetTransactionCountHttpGetIn">
+    <wsdl:part name="username" type="s:string" />
+    <wsdl:part name="password" type="s:string" />
+    <wsdl:part name="startDate" type="s:string" />
+    <wsdl:part name="endDate" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetTransactionCountHttpGetOut">
+    <wsdl:part name="Body" element="tns:TotalTransaction" />
+  </wsdl:message>
+  <wsdl:message name="GetTransactionInfoHttpGetIn">
+    <wsdl:part name="username" type="s:string" />
+    <wsdl:part name="password" type="s:string" />
+    <wsdl:part name="clientRef" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetTransactionInfoHttpGetOut">
+    <wsdl:part name="Body" element="tns:TransactionVoucherInfo" />
+  </wsdl:message>
+  <wsdl:message name="GetTotalDealerCreditHttpPostIn">
+    <wsdl:part name="username" type="s:string" />
+    <wsdl:part name="password" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetTotalDealerCreditHttpPostOut">
+    <wsdl:part name="Body" element="tns:Dealer" />
+  </wsdl:message>
+  <wsdl:message name="GetNetworkHttpPostIn">
+    <wsdl:part name="username" type="s:string" />
+    <wsdl:part name="password" type="s:string" />
+    <wsdl:part name="msisdn" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetNetworkHttpPostOut">
+    <wsdl:part name="Body" element="tns:NetworkInfo" />
+  </wsdl:message>
+  <wsdl:message name="GetNetworkListHttpPostIn">
+    <wsdl:part name="username" type="s:string" />
+    <wsdl:part name="password" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetNetworkListHttpPostOut">
+    <wsdl:part name="Body" element="tns:ArrayOfNetworkInfo" />
+  </wsdl:message>
+  <wsdl:message name="GetVoucherTypeHttpPostIn">
+    <wsdl:part name="username" type="s:string" />
+    <wsdl:part name="password" type="s:string" />
+    <wsdl:part name="networkId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetVoucherTypeHttpPostOut">
+    <wsdl:part name="Body" element="tns:ArrayOfVoucherTypeInfo" />
+  </wsdl:message>
+  <wsdl:message name="GetVoucherHttpPostIn">
+    <wsdl:part name="username" type="s:string" />
+    <wsdl:part name="password" type="s:string" />
+    <wsdl:part name="networkId" type="s:string" />
+    <wsdl:part name="vouchertypeId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetVoucherHttpPostOut">
+    <wsdl:part name="Body" element="tns:ArrayOfVoucherDetails" />
+  </wsdl:message>
+  <wsdl:message name="GetCompleteDataCollectionHttpPostIn">
+    <wsdl:part name="username" type="s:string" />
+    <wsdl:part name="password" type="s:string" />
+    <wsdl:part name="msisdn" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetCompleteDataCollectionHttpPostOut">
+    <wsdl:part name="Body" element="tns:Network" />
+  </wsdl:message>
+  <wsdl:message name="PerformPinlessRechargeHttpPostIn">
+    <wsdl:part name="username" type="s:string" />
+    <wsdl:part name="password" type="s:string" />
+    <wsdl:part name="recipientMsisdn" type="s:string" />
+    <wsdl:part name="voucherId" type="s:string" />
+    <wsdl:part name="amount" type="s:string" />
+    <wsdl:part name="clientRef" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="PerformPinlessRechargeHttpPostOut">
+    <wsdl:part name="Body" element="tns:RechargeInfo" />
+  </wsdl:message>
+  <wsdl:message name="PerformPinnedRechargeHttpPostIn">
+    <wsdl:part name="username" type="s:string" />
+    <wsdl:part name="password" type="s:string" />
+    <wsdl:part name="recipientMsisdn" type="s:string" />
+    <wsdl:part name="voucherId" type="s:string" />
+    <wsdl:part name="amount" type="s:string" />
+    <wsdl:part name="clientRef" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="PerformPinnedRechargeHttpPostOut">
+    <wsdl:part name="Body" element="tns:RechargeInfo" />
+  </wsdl:message>
+  <wsdl:message name="PerformPinnedRechargeWithoutMsisdnHttpPostIn">
+    <wsdl:part name="username" type="s:string" />
+    <wsdl:part name="password" type="s:string" />
+    <wsdl:part name="voucherId" type="s:string" />
+    <wsdl:part name="amount" type="s:string" />
+    <wsdl:part name="clientRef" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="PerformPinnedRechargeWithoutMsisdnHttpPostOut">
+    <wsdl:part name="Body" element="tns:RechargeInfo" />
+  </wsdl:message>
+  <wsdl:message name="PerformPinlessRechargeFixedAmountHttpPostIn">
+    <wsdl:part name="username" type="s:string" />
+    <wsdl:part name="password" type="s:string" />
+    <wsdl:part name="recipientMsisdn" type="s:string" />
+    <wsdl:part name="voucherId" type="s:string" />
+    <wsdl:part name="clientRef" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="PerformPinlessRechargeFixedAmountHttpPostOut">
+    <wsdl:part name="Body" element="tns:RechargeInfo" />
+  </wsdl:message>
+  <wsdl:message name="PerformPinnedRechargeFixedAmountHttpPostIn">
+    <wsdl:part name="username" type="s:string" />
+    <wsdl:part name="password" type="s:string" />
+    <wsdl:part name="recipientMsisdn" type="s:string" />
+    <wsdl:part name="voucherId" type="s:string" />
+    <wsdl:part name="clientRef" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="PerformPinnedRechargeFixedAmountHttpPostOut">
+    <wsdl:part name="Body" element="tns:RechargeInfo" />
+  </wsdl:message>
+  <wsdl:message name="PerformPinnedRechargeWithoutMsisdnFixedAmountHttpPostIn">
+    <wsdl:part name="username" type="s:string" />
+    <wsdl:part name="password" type="s:string" />
+    <wsdl:part name="voucherId" type="s:string" />
+    <wsdl:part name="clientRef" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="PerformPinnedRechargeWithoutMsisdnFixedAmountHttpPostOut">
+    <wsdl:part name="Body" element="tns:RechargeInfo" />
+  </wsdl:message>
+  <wsdl:message name="GetUserStatusHttpPostIn">
+    <wsdl:part name="username" type="s:string" />
+    <wsdl:part name="password" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetUserStatusHttpPostOut">
+    <wsdl:part name="Body" element="tns:UserStatus" />
+  </wsdl:message>
+  <wsdl:message name="GetUserCreditHttpPostIn">
+    <wsdl:part name="username" type="s:string" />
+    <wsdl:part name="password" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetUserCreditHttpPostOut">
+    <wsdl:part name="Body" element="tns:UserCredit" />
+  </wsdl:message>
+  <wsdl:message name="GetTransactionCountHttpPostIn">
+    <wsdl:part name="username" type="s:string" />
+    <wsdl:part name="password" type="s:string" />
+    <wsdl:part name="startDate" type="s:string" />
+    <wsdl:part name="endDate" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetTransactionCountHttpPostOut">
+    <wsdl:part name="Body" element="tns:TotalTransaction" />
+  </wsdl:message>
+  <wsdl:message name="GetTransactionInfoHttpPostIn">
+    <wsdl:part name="username" type="s:string" />
+    <wsdl:part name="password" type="s:string" />
+    <wsdl:part name="clientRef" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetTransactionInfoHttpPostOut">
+    <wsdl:part name="Body" element="tns:TransactionVoucherInfo" />
+  </wsdl:message>
+  <wsdl:portType name="MobileRechargeSoap">
+    <wsdl:operation name="GetTotalDealerCredit">
+      <wsdl:input message="tns:GetTotalDealerCreditSoapIn" />
+      <wsdl:output message="tns:GetTotalDealerCreditSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetNetwork">
+      <wsdl:input message="tns:GetNetworkSoapIn" />
+      <wsdl:output message="tns:GetNetworkSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetNetworkList">
+      <wsdl:input message="tns:GetNetworkListSoapIn" />
+      <wsdl:output message="tns:GetNetworkListSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetVoucherType">
+      <wsdl:input message="tns:GetVoucherTypeSoapIn" />
+      <wsdl:output message="tns:GetVoucherTypeSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetVoucher">
+      <wsdl:input message="tns:GetVoucherSoapIn" />
+      <wsdl:output message="tns:GetVoucherSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCompleteDataCollection">
+      <wsdl:input message="tns:GetCompleteDataCollectionSoapIn" />
+      <wsdl:output message="tns:GetCompleteDataCollectionSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PerformPinlessRecharge">
+      <wsdl:input message="tns:PerformPinlessRechargeSoapIn" />
+      <wsdl:output message="tns:PerformPinlessRechargeSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PerformPinnedRecharge">
+      <wsdl:input message="tns:PerformPinnedRechargeSoapIn" />
+      <wsdl:output message="tns:PerformPinnedRechargeSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PerformPinnedRechargeWithoutMsisdn">
+      <wsdl:input message="tns:PerformPinnedRechargeWithoutMsisdnSoapIn" />
+      <wsdl:output message="tns:PerformPinnedRechargeWithoutMsisdnSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PerformPinlessRechargeFixedAmount">
+      <wsdl:input message="tns:PerformPinlessRechargeFixedAmountSoapIn" />
+      <wsdl:output message="tns:PerformPinlessRechargeFixedAmountSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PerformPinnedRechargeFixedAmount">
+      <wsdl:input message="tns:PerformPinnedRechargeFixedAmountSoapIn" />
+      <wsdl:output message="tns:PerformPinnedRechargeFixedAmountSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PerformPinnedRechargeWithoutMsisdnFixedAmount">
+      <wsdl:input message="tns:PerformPinnedRechargeWithoutMsisdnFixedAmountSoapIn" />
+      <wsdl:output message="tns:PerformPinnedRechargeWithoutMsisdnFixedAmountSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUserStatus">
+      <wsdl:input message="tns:GetUserStatusSoapIn" />
+      <wsdl:output message="tns:GetUserStatusSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUserCredit">
+      <wsdl:input message="tns:GetUserCreditSoapIn" />
+      <wsdl:output message="tns:GetUserCreditSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTransactionCount">
+      <wsdl:input message="tns:GetTransactionCountSoapIn" />
+      <wsdl:output message="tns:GetTransactionCountSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTransactionInfo">
+      <wsdl:input message="tns:GetTransactionInfoSoapIn" />
+      <wsdl:output message="tns:GetTransactionInfoSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="MobileRechargeHttpGet">
+    <wsdl:operation name="GetTotalDealerCredit">
+      <wsdl:input message="tns:GetTotalDealerCreditHttpGetIn" />
+      <wsdl:output message="tns:GetTotalDealerCreditHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetNetwork">
+      <wsdl:input message="tns:GetNetworkHttpGetIn" />
+      <wsdl:output message="tns:GetNetworkHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetNetworkList">
+      <wsdl:input message="tns:GetNetworkListHttpGetIn" />
+      <wsdl:output message="tns:GetNetworkListHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetVoucherType">
+      <wsdl:input message="tns:GetVoucherTypeHttpGetIn" />
+      <wsdl:output message="tns:GetVoucherTypeHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetVoucher">
+      <wsdl:input message="tns:GetVoucherHttpGetIn" />
+      <wsdl:output message="tns:GetVoucherHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCompleteDataCollection">
+      <wsdl:input message="tns:GetCompleteDataCollectionHttpGetIn" />
+      <wsdl:output message="tns:GetCompleteDataCollectionHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PerformPinlessRecharge">
+      <wsdl:input message="tns:PerformPinlessRechargeHttpGetIn" />
+      <wsdl:output message="tns:PerformPinlessRechargeHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PerformPinnedRecharge">
+      <wsdl:input message="tns:PerformPinnedRechargeHttpGetIn" />
+      <wsdl:output message="tns:PerformPinnedRechargeHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PerformPinnedRechargeWithoutMsisdn">
+      <wsdl:input message="tns:PerformPinnedRechargeWithoutMsisdnHttpGetIn" />
+      <wsdl:output message="tns:PerformPinnedRechargeWithoutMsisdnHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PerformPinlessRechargeFixedAmount">
+      <wsdl:input message="tns:PerformPinlessRechargeFixedAmountHttpGetIn" />
+      <wsdl:output message="tns:PerformPinlessRechargeFixedAmountHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PerformPinnedRechargeFixedAmount">
+      <wsdl:input message="tns:PerformPinnedRechargeFixedAmountHttpGetIn" />
+      <wsdl:output message="tns:PerformPinnedRechargeFixedAmountHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PerformPinnedRechargeWithoutMsisdnFixedAmount">
+      <wsdl:input message="tns:PerformPinnedRechargeWithoutMsisdnFixedAmountHttpGetIn" />
+      <wsdl:output message="tns:PerformPinnedRechargeWithoutMsisdnFixedAmountHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUserStatus">
+      <wsdl:input message="tns:GetUserStatusHttpGetIn" />
+      <wsdl:output message="tns:GetUserStatusHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUserCredit">
+      <wsdl:input message="tns:GetUserCreditHttpGetIn" />
+      <wsdl:output message="tns:GetUserCreditHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTransactionCount">
+      <wsdl:input message="tns:GetTransactionCountHttpGetIn" />
+      <wsdl:output message="tns:GetTransactionCountHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTransactionInfo">
+      <wsdl:input message="tns:GetTransactionInfoHttpGetIn" />
+      <wsdl:output message="tns:GetTransactionInfoHttpGetOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="MobileRechargeHttpPost">
+    <wsdl:operation name="GetTotalDealerCredit">
+      <wsdl:input message="tns:GetTotalDealerCreditHttpPostIn" />
+      <wsdl:output message="tns:GetTotalDealerCreditHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetNetwork">
+      <wsdl:input message="tns:GetNetworkHttpPostIn" />
+      <wsdl:output message="tns:GetNetworkHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetNetworkList">
+      <wsdl:input message="tns:GetNetworkListHttpPostIn" />
+      <wsdl:output message="tns:GetNetworkListHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetVoucherType">
+      <wsdl:input message="tns:GetVoucherTypeHttpPostIn" />
+      <wsdl:output message="tns:GetVoucherTypeHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetVoucher">
+      <wsdl:input message="tns:GetVoucherHttpPostIn" />
+      <wsdl:output message="tns:GetVoucherHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCompleteDataCollection">
+      <wsdl:input message="tns:GetCompleteDataCollectionHttpPostIn" />
+      <wsdl:output message="tns:GetCompleteDataCollectionHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PerformPinlessRecharge">
+      <wsdl:input message="tns:PerformPinlessRechargeHttpPostIn" />
+      <wsdl:output message="tns:PerformPinlessRechargeHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PerformPinnedRecharge">
+      <wsdl:input message="tns:PerformPinnedRechargeHttpPostIn" />
+      <wsdl:output message="tns:PerformPinnedRechargeHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PerformPinnedRechargeWithoutMsisdn">
+      <wsdl:input message="tns:PerformPinnedRechargeWithoutMsisdnHttpPostIn" />
+      <wsdl:output message="tns:PerformPinnedRechargeWithoutMsisdnHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PerformPinlessRechargeFixedAmount">
+      <wsdl:input message="tns:PerformPinlessRechargeFixedAmountHttpPostIn" />
+      <wsdl:output message="tns:PerformPinlessRechargeFixedAmountHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PerformPinnedRechargeFixedAmount">
+      <wsdl:input message="tns:PerformPinnedRechargeFixedAmountHttpPostIn" />
+      <wsdl:output message="tns:PerformPinnedRechargeFixedAmountHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PerformPinnedRechargeWithoutMsisdnFixedAmount">
+      <wsdl:input message="tns:PerformPinnedRechargeWithoutMsisdnFixedAmountHttpPostIn" />
+      <wsdl:output message="tns:PerformPinnedRechargeWithoutMsisdnFixedAmountHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUserStatus">
+      <wsdl:input message="tns:GetUserStatusHttpPostIn" />
+      <wsdl:output message="tns:GetUserStatusHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUserCredit">
+      <wsdl:input message="tns:GetUserCreditHttpPostIn" />
+      <wsdl:output message="tns:GetUserCreditHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTransactionCount">
+      <wsdl:input message="tns:GetTransactionCountHttpPostIn" />
+      <wsdl:output message="tns:GetTransactionCountHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTransactionInfo">
+      <wsdl:input message="tns:GetTransactionInfoHttpPostIn" />
+      <wsdl:output message="tns:GetTransactionInfoHttpPostOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="MobileRechargeSoap" type="tns:MobileRechargeSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetTotalDealerCredit">
+      <soap:operation soapAction="https://mobilerechargeapi.gsm.co.za/GetTotalDealerCredit" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetNetwork">
+      <soap:operation soapAction="https://mobilerechargeapi.gsm.co.za/GetNetwork" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetNetworkList">
+      <soap:operation soapAction="https://mobilerechargeapi.gsm.co.za/GetNetworkList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetVoucherType">
+      <soap:operation soapAction="https://mobilerechargeapi.gsm.co.za/GetVoucherType" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetVoucher">
+      <soap:operation soapAction="https://mobilerechargeapi.gsm.co.za/GetVoucher" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCompleteDataCollection">
+      <soap:operation soapAction="https://mobilerechargeapi.gsm.co.za/GetCompleteDataCollection" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PerformPinlessRecharge">
+      <soap:operation soapAction="https://mobilerechargeapi.gsm.co.za/PerformPinlessRecharge" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PerformPinnedRecharge">
+      <soap:operation soapAction="https://mobilerechargeapi.gsm.co.za/PerformPinnedRecharge" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PerformPinnedRechargeWithoutMsisdn">
+      <soap:operation soapAction="https://mobilerechargeapi.gsm.co.za/PerformPinnedRechargeWithoutMsisdn" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PerformPinlessRechargeFixedAmount">
+      <soap:operation soapAction="https://mobilerechargeapi.gsm.co.za/PerformPinlessRechargeFixedAmount" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PerformPinnedRechargeFixedAmount">
+      <soap:operation soapAction="https://mobilerechargeapi.gsm.co.za/PerformPinnedRechargeFixedAmount" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PerformPinnedRechargeWithoutMsisdnFixedAmount">
+      <soap:operation soapAction="https://mobilerechargeapi.gsm.co.za/PerformPinnedRechargeWithoutMsisdnFixedAmount" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUserStatus">
+      <soap:operation soapAction="https://mobilerechargeapi.gsm.co.za/GetUserStatus" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUserCredit">
+      <soap:operation soapAction="https://mobilerechargeapi.gsm.co.za/GetUserCredit" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTransactionCount">
+      <soap:operation soapAction="https://mobilerechargeapi.gsm.co.za/GetTransactionCount" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTransactionInfo">
+      <soap:operation soapAction="https://mobilerechargeapi.gsm.co.za/GetTransactionInfo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="MobileRechargeSoap12" type="tns:MobileRechargeSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetTotalDealerCredit">
+      <soap12:operation soapAction="https://mobilerechargeapi.gsm.co.za/GetTotalDealerCredit" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetNetwork">
+      <soap12:operation soapAction="https://mobilerechargeapi.gsm.co.za/GetNetwork" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetNetworkList">
+      <soap12:operation soapAction="https://mobilerechargeapi.gsm.co.za/GetNetworkList" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetVoucherType">
+      <soap12:operation soapAction="https://mobilerechargeapi.gsm.co.za/GetVoucherType" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetVoucher">
+      <soap12:operation soapAction="https://mobilerechargeapi.gsm.co.za/GetVoucher" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCompleteDataCollection">
+      <soap12:operation soapAction="https://mobilerechargeapi.gsm.co.za/GetCompleteDataCollection" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PerformPinlessRecharge">
+      <soap12:operation soapAction="https://mobilerechargeapi.gsm.co.za/PerformPinlessRecharge" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PerformPinnedRecharge">
+      <soap12:operation soapAction="https://mobilerechargeapi.gsm.co.za/PerformPinnedRecharge" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PerformPinnedRechargeWithoutMsisdn">
+      <soap12:operation soapAction="https://mobilerechargeapi.gsm.co.za/PerformPinnedRechargeWithoutMsisdn" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PerformPinlessRechargeFixedAmount">
+      <soap12:operation soapAction="https://mobilerechargeapi.gsm.co.za/PerformPinlessRechargeFixedAmount" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PerformPinnedRechargeFixedAmount">
+      <soap12:operation soapAction="https://mobilerechargeapi.gsm.co.za/PerformPinnedRechargeFixedAmount" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PerformPinnedRechargeWithoutMsisdnFixedAmount">
+      <soap12:operation soapAction="https://mobilerechargeapi.gsm.co.za/PerformPinnedRechargeWithoutMsisdnFixedAmount" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUserStatus">
+      <soap12:operation soapAction="https://mobilerechargeapi.gsm.co.za/GetUserStatus" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUserCredit">
+      <soap12:operation soapAction="https://mobilerechargeapi.gsm.co.za/GetUserCredit" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTransactionCount">
+      <soap12:operation soapAction="https://mobilerechargeapi.gsm.co.za/GetTransactionCount" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTransactionInfo">
+      <soap12:operation soapAction="https://mobilerechargeapi.gsm.co.za/GetTransactionInfo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="MobileRechargeHttpGet" type="tns:MobileRechargeHttpGet">
+    <http:binding verb="GET" />
+    <wsdl:operation name="GetTotalDealerCredit">
+      <http:operation location="/GetTotalDealerCredit" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetNetwork">
+      <http:operation location="/GetNetwork" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetNetworkList">
+      <http:operation location="/GetNetworkList" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetVoucherType">
+      <http:operation location="/GetVoucherType" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetVoucher">
+      <http:operation location="/GetVoucher" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCompleteDataCollection">
+      <http:operation location="/GetCompleteDataCollection" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PerformPinlessRecharge">
+      <http:operation location="/PerformPinlessRecharge" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PerformPinnedRecharge">
+      <http:operation location="/PerformPinnedRecharge" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PerformPinnedRechargeWithoutMsisdn">
+      <http:operation location="/PerformPinnedRechargeWithoutMsisdn" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PerformPinlessRechargeFixedAmount">
+      <http:operation location="/PerformPinlessRechargeFixedAmount" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PerformPinnedRechargeFixedAmount">
+      <http:operation location="/PerformPinnedRechargeFixedAmount" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PerformPinnedRechargeWithoutMsisdnFixedAmount">
+      <http:operation location="/PerformPinnedRechargeWithoutMsisdnFixedAmount" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUserStatus">
+      <http:operation location="/GetUserStatus" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUserCredit">
+      <http:operation location="/GetUserCredit" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTransactionCount">
+      <http:operation location="/GetTransactionCount" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTransactionInfo">
+      <http:operation location="/GetTransactionInfo" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="MobileRechargeHttpPost" type="tns:MobileRechargeHttpPost">
+    <http:binding verb="POST" />
+    <wsdl:operation name="GetTotalDealerCredit">
+      <http:operation location="/GetTotalDealerCredit" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetNetwork">
+      <http:operation location="/GetNetwork" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetNetworkList">
+      <http:operation location="/GetNetworkList" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetVoucherType">
+      <http:operation location="/GetVoucherType" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetVoucher">
+      <http:operation location="/GetVoucher" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCompleteDataCollection">
+      <http:operation location="/GetCompleteDataCollection" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PerformPinlessRecharge">
+      <http:operation location="/PerformPinlessRecharge" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PerformPinnedRecharge">
+      <http:operation location="/PerformPinnedRecharge" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PerformPinnedRechargeWithoutMsisdn">
+      <http:operation location="/PerformPinnedRechargeWithoutMsisdn" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PerformPinlessRechargeFixedAmount">
+      <http:operation location="/PerformPinlessRechargeFixedAmount" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PerformPinnedRechargeFixedAmount">
+      <http:operation location="/PerformPinnedRechargeFixedAmount" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PerformPinnedRechargeWithoutMsisdnFixedAmount">
+      <http:operation location="/PerformPinnedRechargeWithoutMsisdnFixedAmount" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUserStatus">
+      <http:operation location="/GetUserStatus" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUserCredit">
+      <http:operation location="/GetUserCredit" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTransactionCount">
+      <http:operation location="/GetTransactionCount" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTransactionInfo">
+      <http:operation location="/GetTransactionInfo" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="MobileRecharge">
+    <wsdl:port name="MobileRechargeSoap" binding="tns:MobileRechargeSoap">
+      <soap:address location="https://mobilerechargeapi.gsm.co.za/MobileRecharge.asmx" />
+    </wsdl:port>
+    <wsdl:port name="MobileRechargeSoap12" binding="tns:MobileRechargeSoap12">
+      <soap12:address location="https://mobilerechargeapi.gsm.co.za/MobileRecharge.asmx" />
+    </wsdl:port>
+    <wsdl:port name="MobileRechargeHttpGet" binding="tns:MobileRechargeHttpGet">
+      <http:address location="https://mobilerechargeapi.gsm.co.za/MobileRecharge.asmx" />
+    </wsdl:port>
+    <wsdl:port name="MobileRechargeHttpPost" binding="tns:MobileRechargeHttpPost">
+      <http:address location="https://mobilerechargeapi.gsm.co.za/MobileRecharge.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
