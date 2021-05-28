@@ -8,7 +8,7 @@
     <version>1.0.0</version>
     
     <properties>
-        <quarkus.version>999-SNAPSHOT</quarkus.version>
+        <quarkus.version>2.0.0.CR1</quarkus.version>
         <compiler-plugin.version>3.8.0</compiler-plugin.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
@@ -79,6 +79,12 @@
             <artifactId>junit-jupiter-engine</artifactId>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>org.asynchttpclient</groupId>
+            <artifactId>async-http-client</artifactId>
+            <version>2.12.2</version>
+            <type>jar</type>
+        </dependency>
     </dependencies>
 
     <build>
@@ -104,15 +110,13 @@
                 <groupId>io.quarkus</groupId>
                 <artifactId>quarkus-maven-plugin</artifactId>
                 <version>${quarkus.version}</version>
-                <configuration>
-                    <finalName>service</finalName>
-                </configuration>
+                <extensions>true</extensions>
                 <executions>
                     <execution>
                         <goals>
+                            <goal>build</goal>
                             <goal>generate-code</goal>
                             <goal>generate-code-tests</goal>
-                            <goal>build</goal>
                         </goals>
                     </execution>
                 </executions>

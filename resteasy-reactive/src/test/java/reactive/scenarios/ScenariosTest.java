@@ -17,10 +17,11 @@ public class ScenariosTest {
     public void test1() {
         given()
                 .contentType(ContentType.TEXT)
+                .body("Hello")
                 .post("/test/xxx")
                 .then()
-                .statusCode(200)
-                .extract().asString();
+                .statusCode(201)
+                .extract().asString().equals("OK");
 
     }
 
