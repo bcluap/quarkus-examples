@@ -1,18 +1,19 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <name>Module2</name>
+    <name>MyLibrary</name>
     <groupId>ukheshe</groupId>
-    <artifactId>mm-2</artifactId>
+    <artifactId>mylibrary</artifactId>
     <version>1.0.0</version>
     <packaging>jar</packaging>
+    
+    <parent>
+        <groupId>ukheshe</groupId>
+        <artifactId>multimodule</artifactId>
+        <version>1.0.0</version>
+    </parent>
 
-     <properties>
-        <quarkus.version>2.7.0.Final</quarkus.version>
-        <compiler-plugin.version>3.8.0</compiler-plugin.version>
+    <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
     </properties>
     <dependencyManagement>
         <dependencies>
@@ -27,11 +28,6 @@
     </dependencyManagement>
     
     <dependencies>
-         <dependency>
-            <groupId>ukheshe</groupId>
-            <artifactId>mylibrary</artifactId>
-            <version>${project.version}</version>
-        </dependency>
         <dependency>
             <groupId>jakarta.enterprise</groupId>
             <artifactId>jakarta.enterprise.cdi-api</artifactId>

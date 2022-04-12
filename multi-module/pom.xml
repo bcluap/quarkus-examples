@@ -10,15 +10,15 @@
     
     
     <properties>
-        <quarkus.version>1.13.3.Final</quarkus.version>
+        <quarkus.version>2.7.0.Final</quarkus.version>
         <compiler-plugin.version>3.8.0</compiler-plugin.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
     </properties>
     
     <modules>
+        <module>my-library</module>
         <module>mm-1</module>
-        <module>mm-2</module>
         <module>runnable</module>
     </modules>
 

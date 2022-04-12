@@ -4,7 +4,9 @@
  */
 package rest1;
 
+import com.ukheshe.mathslibrary.MathsBean;
 import javax.enterprise.context.ApplicationScoped;
+import javax.inject.Inject;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
@@ -17,11 +19,14 @@ import org.slf4j.LoggerFactory;
 public class Rest1 {
 
     private static final Logger log = LoggerFactory.getLogger(Rest1.class);
-
+    
+    @Inject
+    MathsBean mb;
+    
     @GET
     @Produces(MediaType.TEXT_PLAIN)
-    public String get1() {
-        return "Hello world";
+    public String get1() throws ClassNotFoundException {
+        return String.valueOf(mb.add(1, 2));
     }
 
 }
