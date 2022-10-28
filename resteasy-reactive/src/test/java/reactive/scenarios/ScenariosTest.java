@@ -3,7 +3,6 @@ package reactive.scenarios;
 import static io.restassured.RestAssured.given;
 
 import io.quarkus.test.junit.QuarkusTest;
-import io.restassured.http.ContentType;
 import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -15,13 +14,12 @@ public class ScenariosTest {
 
     @Test
     public void test1() {
-        given()
-                .contentType(ContentType.TEXT)
-                .body("Hello")
-                .post("/test/xxx")
-                .then()
-                .statusCode(201)
-                .extract().asString().equals("OK");
+        String test = "https://aaa.bbb";
+            given()
+                    .get("/test/" + test)
+                    .then()
+                    .statusCode(200)
+                    .extract().asString().equals(test);
 
     }
 

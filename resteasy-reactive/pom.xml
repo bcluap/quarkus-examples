@@ -8,7 +8,7 @@
     <version>1.0.0</version>
     
     <properties>
-        <quarkus.version>2.0.0.CR1</quarkus.version>
+        <quarkus.version>2.14.0.CR1</quarkus.version>
         <compiler-plugin.version>3.8.0</compiler-plugin.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
@@ -17,7 +17,7 @@
     <dependencyManagement>
         <dependencies>
             <dependency>
-                <groupId>io.quarkus</groupId>
+                <groupId>io.quarkus.platform</groupId>
                 <artifactId>quarkus-bom</artifactId>
                 <scope>import</scope>
                 <type>pom</type>
@@ -41,16 +41,6 @@
             <groupId>io.quarkus</groupId>
             <artifactId>quarkus-resteasy-reactive-jackson</artifactId>
         </dependency>
-        
-        
-        <!--dependency>
-            <groupId>io.quarkus</groupId>
-            <artifactId>quarkus-resteasy</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>io.quarkus</groupId>
-            <artifactId>quarkus-resteasy-jackson</artifactId>
-        </dependency-->
         
         <!-- Test dependencies -->
         <!-- Dependencies specific to this Microservice -->
@@ -83,6 +73,12 @@
             <groupId>org.asynchttpclient</groupId>
             <artifactId>async-http-client</artifactId>
             <version>2.12.2</version>
+            <type>jar</type>
+        </dependency>
+        <dependency>
+            <groupId>commons-io</groupId>
+            <artifactId>commons-io</artifactId>
+            <version>2.11.0</version>
             <type>jar</type>
         </dependency>
     </dependencies>
