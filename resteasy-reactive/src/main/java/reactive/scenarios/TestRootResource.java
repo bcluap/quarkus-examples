@@ -13,6 +13,10 @@ import io.vertx.mutiny.core.http.HttpClient;
 import io.vertx.mutiny.core.http.HttpClientRequest;
 import io.vertx.mutiny.core.http.HttpClientResponse;
 import jakarta.enterprise.context.ApplicationScoped;
+import jakarta.enterprise.context.ContextNotActiveException;
+import jakarta.enterprise.context.RequestScoped;
+import jakarta.enterprise.context.control.ActivateRequestContext;
+import jakarta.enterprise.inject.spi.CDI;
 import jakarta.inject.Inject;
 import jakarta.transaction.Transactional;
 import jakarta.ws.rs.GET;
@@ -61,7 +65,7 @@ public class TestRootResource {
         return "Hello World!";
     }
 
-    private void doVertxWebCall(boolean runResponseInDuplicatedContext) {
+    public void doVertxWebCall(boolean runResponseInDuplicatedContext) {
 
         tracer.spanBuilder("Test").startSpan().makeCurrent();
         Span mySpan = Span.current();
@@ -103,7 +107,10 @@ public class TestRootResource {
         }).await().indefinitely();
     }
 
-    private void makeRequestSpanCurrent(Span span) {
+    @ActivateRequestContext
+    public void makeRequestSpanCurrent(Span span) {
+        
+        log.info("Am I in a request context [{}]", amInRequestContext());
         try (Scope scope = span.makeCurrent()) {
             log.info("My span is [{}]", Span.current());
             if (!span.getSpanContext().getSpanId().equals(Span.current().getSpanContext().getSpanId())) {
@@ -111,6 +118,14 @@ public class TestRootResource {
             } else {
                 log.warn("This is correct! The current span id is [{}] and I probably have MDC data", span.getSpanContext().getSpanId());
             }
+        }
+    }
+    
+    public boolean amInRequestContext() {
+        try {
+            return CDI.current().getBeanManager().getContext(RequestScoped.class).isActive();
+        } catch (ContextNotActiveException | IllegalArgumentException e) {
+            return false;
         }
     }
 }
