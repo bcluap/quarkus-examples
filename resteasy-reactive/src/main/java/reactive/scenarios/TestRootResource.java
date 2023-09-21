@@ -21,6 +21,7 @@ import jakarta.inject.Inject;
 import jakarta.transaction.Transactional;
 import jakarta.ws.rs.GET;
 import jakarta.ws.rs.Path;
+import org.eclipse.microprofile.context.ThreadContext;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -30,6 +31,7 @@ import org.slf4j.LoggerFactory;
 public class TestRootResource {
 
     private static final Logger log = LoggerFactory.getLogger(TestRootResource.class);
+    ThreadContext threadContext = ThreadContext.builder().propagated(ThreadContext.CDI).build();
 
     @Inject
     Vertx vertx;
@@ -39,9 +41,10 @@ public class TestRootResource {
     @GET
     @Path("/doesnotwork")
     public String go1() throws InterruptedException {
-        Thread t = new Thread(() -> {
+        Runnable go = ()-> {
             doVertxWebCall(false);
-        });
+        };
+        Thread t = new Thread(threadContext.contextualRunnable(go));
         t.start();
         t.join();
         return "Hello World!";
@@ -64,7 +67,7 @@ public class TestRootResource {
         doVertxWebCall(false);
         return "Hello World!";
     }
-
+    
     public void doVertxWebCall(boolean runResponseInDuplicatedContext) {
 
         tracer.spanBuilder("Test").startSpan().makeCurrent();
@@ -108,7 +111,7 @@ public class TestRootResource {
     }
 
     public void makeRequestSpanCurrent(Span span) {
-        
+
         log.info("Am I in a request context [{}]", amInRequestContext());
         try (Scope scope = span.makeCurrent()) {
             log.info("My span is [{}]", Span.current());
@@ -119,7 +122,7 @@ public class TestRootResource {
             }
         }
     }
-    
+
     public boolean amInRequestContext() {
         try {
             return CDI.current().getBeanManager().getContext(RequestScoped.class).isActive();
