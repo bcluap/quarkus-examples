@@ -22,6 +22,10 @@ public class ScenariosTest {
                 .get("/doeswork")
                 .then()
                 .statusCode(200);
+        given()
+                .get("/doesworkaswell")
+                .then()
+                .statusCode(200);
     }
 
 }

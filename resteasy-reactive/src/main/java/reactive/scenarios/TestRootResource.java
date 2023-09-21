@@ -54,6 +54,13 @@ public class TestRootResource {
         return "Hello World!";
     }
 
+    @GET
+    @Path("/doesworkaswell")
+    public String go3() throws InterruptedException {
+        doVertxWebCall(false);
+        return "Hello World!";
+    }
+
     private void doVertxWebCall(boolean runResponseInDuplicatedContext) {
 
         tracer.spanBuilder("Test").startSpan().makeCurrent();
