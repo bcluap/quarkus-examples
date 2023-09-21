@@ -40,7 +40,7 @@ public class TestRootResource {
     @Path("/doesnotwork")
     public String go1() throws InterruptedException {
         Thread t = new Thread(() -> {
-            //doVertxWebCall(false);
+            doVertxWebCall(false);
         });
         t.start();
         t.join();
@@ -51,7 +51,7 @@ public class TestRootResource {
     @Path("/doeswork")
     public String go2() throws InterruptedException {
         Thread t = new Thread(() -> {
-            //doVertxWebCall(true);
+            doVertxWebCall(true);
         });
         t.start();
         t.join();
