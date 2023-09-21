@@ -114,7 +114,7 @@ public class TestRootResource {
         try (Scope scope = span.makeCurrent()) {
             log.info("My span is [{}]", Span.current());
             if (!span.getSpanContext().getSpanId().equals(Span.current().getSpanContext().getSpanId())) {
-                log.warn("This is wrong! The current span Id should be [{}] and I probably have no MDC data", span.getSpanContext().getSpanId());
+                log.warn("This is wrong! The current span Id should be [{}] but is [{}] and I probably have no MDC data", span.getSpanContext().getSpanId(), Span.current().getSpanContext().getSpanId());
             } else {
                 log.warn("This is correct! The current span id is [{}] and I probably have MDC data", span.getSpanContext().getSpanId());
             }
