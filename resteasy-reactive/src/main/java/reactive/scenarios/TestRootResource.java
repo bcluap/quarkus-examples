@@ -40,7 +40,7 @@ public class TestRootResource {
     @Path("/doesnotwork")
     public String go1() throws InterruptedException {
         Thread t = new Thread(() -> {
-            doVertxWebCall(false);
+            //doVertxWebCall(false);
         });
         t.start();
         t.join();
@@ -51,7 +51,7 @@ public class TestRootResource {
     @Path("/doeswork")
     public String go2() throws InterruptedException {
         Thread t = new Thread(() -> {
-            doVertxWebCall(true);
+            //doVertxWebCall(true);
         });
         t.start();
         t.join();
@@ -83,7 +83,7 @@ public class TestRootResource {
                 });
         responseUni.onItem().invoke((HttpClientResponse response) -> {
             response.statusCode();
-            log.info("Now processing response. I'm on eventloop thread inside a vertx context. My span is [{}] which is the noop span", Span.current());
+            log.info("Now processing response. I'm on eventloop thread inside a vertx context. My span is [{}]", Span.current());
             if (!VertxContext.isOnDuplicatedContext()) {
                 log.info("I am not in a duplicated context");
                 Context vertxContext = vertx.getOrCreateContext();
@@ -107,7 +107,6 @@ public class TestRootResource {
         }).await().indefinitely();
     }
 
-    @ActivateRequestContext
     public void makeRequestSpanCurrent(Span span) {
         
         log.info("Am I in a request context [{}]", amInRequestContext());
