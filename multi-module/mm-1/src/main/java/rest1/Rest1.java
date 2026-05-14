@@ -4,7 +4,7 @@
  */
 package rest1;
 
-import com.ukheshe.mathslibrary.MathsBean;
+import io.smallrye.common.annotation.RunOnVirtualThread;
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 import javax.ws.rs.GET;
@@ -16,17 +16,16 @@ import org.slf4j.LoggerFactory;
 
 @ApplicationScoped
 @Path("/get1")
+@RunOnVirtualThread
 public class Rest1 {
 
     private static final Logger log = LoggerFactory.getLogger(Rest1.class);
     
-    @Inject
-    MathsBean mb;
-    
     @GET
     @Produces(MediaType.TEXT_PLAIN)
     public String get1() throws ClassNotFoundException {
-        return String.valueOf(mb.add(1, 2));
+        log.warn("Thread is virtual [{}]", Thread.currentThread().isVirtual());
+        return "bbb";
     }
 
 }
